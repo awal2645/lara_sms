@@ -1,79 +1,97 @@
-@extends('layouts.side_menu_layout')
+@extends('layouts.admin-app')
 @section('content')
+        <!-- Button trigger modal -->
+            <button type="button" class="btn  btn-info" data-toggle="modal" data-target="#exampleModal">
+                Add Subject
+            </button>
+            <!-- Modal -->
+            <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <form action="">
 
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Add Subject</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                            <div class="modal-body">
+                                <div class="errMsgContainer">
+                                    
+                                </div>
+                                <div class="form-group ">
+                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Subject Name:-</label>
 
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+                                    <input type="text" name="sub_name" class="form-control" id="sub_name"
+                                        placeholder="Subject Name" required>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-      <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard v1</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-
-    <!-- Main content -->
-    <section class="content ">
-
-<div class="row justify-content-center">
-    <div class="col-8">
-        <div class="card card-info">
-            <div class="card-header">
-              <h3 class="card-title">ADD SUBJECT</h3>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit add_subject" class="btn btn-primary">Save </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <!-- /.card-header -->
-            <!-- form start -->
-            <form  action="{{route('add.subject')}}" method="POST" enctype="multipart/form-data">
-                @csrf
-              <div class="card-body">
-                <div class="form-group row">
-                  <label for="inputEmail3" class="col-sm-2 col-form-label">Subject Name</label>
-                  <div class="col-sm-10">
-                    <input type="text" name="sub_name" class="form-control"  placeholder="Subject Name" required>
-                  </div>
+            <!-- /.Modal -->
+        <!--  card-body -->
+            <div class="card card-info mt-4">
+                <div class="card-header">
+                    <h3 class="card-title">Files</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body p-0" style="display: block;">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th> subject </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($subject as $item)
+                            <tr>
+                                <td>{{ $item->sub_name }}</td>
+                                <td class="text-right py-0 align-middle">
+                                    <div class="btn-group btn-group-sm">
+                                        <a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
+                                        <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
                 
-             
-              </div>
-              <!-- /.card-body -->
-              <div class="card-footer">
-                <button type="submit" class="btn btn-info">Submit</button>
-                {{-- <button type="submit" class="btn btn-default float-right">Cancel</button> --}}
-              </div>
-              <!-- /.card-footer -->
-            </form>
-          </div>
-        </div>
-    </div>
+            </div>
+        <!-- /.card-body -->
+    <script>
+        $(document).ready(function() {
+            $(document).on('click', '.add_subject', function(e) {
+                e.preventDefault();
+                let name = $('#sub_name').val();
+                console.log(name);
+            });
+        })
+    </script>
 
-    </section>
-    <!-- /.content -->
-    </div>
-   
-	<script>
-        @if(Session::has('success'))
-        toastr.options={
-            "closeButton":true,
-            "progressBar":true
-        },
-        toastr.success("{{'Data added Successfully'}}")
+    <script>
+        @if (Session::has('success'))
+            toastr.options = {
+                    "closeButton": true,
+                    "progressBar": true
+                },
+                toastr.success("{{ 'Data added Successfully' }}")
         @endif
     </script>
-    
- 
-    @endsection
+@endsection
