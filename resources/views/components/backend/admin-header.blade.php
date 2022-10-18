@@ -23,4 +23,10 @@
   <link rel="stylesheet" href=" {{asset('plugins/daterangepicker/daterangepicker.css')}}">
   <!-- summernote -->
   <link rel="stylesheet" href=" {{asset('plugins/summernote/summernote-bs4.min.css')}}">
+  
+  <!-- jQuery -->
+  <script src=" {{asset('plugins/jquery/jquery.min.js')}}"></script>
+  <!-- jQuery UI 1.11.4 -->
+  <script src=" {{asset('plugins/jquery-ui/jquery-ui.min.js')}}"></script>
+  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 </head>

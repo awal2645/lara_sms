@@ -1,29 +1,5 @@
 @extends('layouts.admin-app')
 @section('content')
-
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{route('home.page')}}">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-
-    <!-- Main content -->
-    <section class="content">
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
@@ -295,7 +271,7 @@
                     <!-- End Contact Item -->
                     <li>
                       <a href="#">
-                        <img class="contacts-list-img" src="{{asset('dist/img/user-128x128.jpg')}}" alt="User Avatar">
+                        <img class="contacts-list-img" src="{{asset('dist/img/user1-128x128.jpg')}}" alt="User Avatar">
 
                         <div class="contacts-list-info">
                           <span class="contacts-list-name">
@@ -603,10 +579,7 @@
         </div>
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
-  </div>
-  
+
   
       
   @endsection

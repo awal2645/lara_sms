@@ -32,7 +32,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit add_subject" class="btn btn-primary">Save </button>
+                                <button type="button" class="btn btn-primary add_subject">Save </button>
                             </div>
                         </div>
                     </div>
@@ -75,15 +75,6 @@
                 
             </div>
         <!-- /.card-body -->
-    <script>
-        $(document).ready(function() {
-            $(document).on('click', '.add_subject', function(e) {
-                e.preventDefault();
-                let name = $('#sub_name').val();
-                console.log(name);
-            });
-        })
-    </script>
 
     <script>
         @if (Session::has('success'))

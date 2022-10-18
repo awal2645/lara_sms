@@ -8,10 +8,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 // admin route start
-Route::get('/admin/home' , [HomeController::class,'homePage'])->name('home.page');
-Route::get('admin/setting' ,[SettingController::class,'settingPage'])->name('setting.page');
-Route::get('admin/add/subject',[SubjectController::class,'addSubjectPage'])->name('add.subject.page');
-Route::post('admin/add/subject/add',[SubjectController::class,'addSubject'])->name('add.subject');
+Route::get('home' , [HomeController::class,'homePage'])->name('home.page');
+Route::get('setting' ,[SettingController::class,'settingPage'])->name('setting.page');
+Route::get('add/subject',[SubjectController::class,'addSubjectPage'])->name('add.subject.page');
+Route::post('add/subject/add',[SubjectController::class,'addSubject'])->name('add.subject');
 
 // admin route end
 require __DIR__.'/auth.php';
