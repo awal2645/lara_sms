@@ -29,9 +29,5 @@
 <script src="{{asset('dist/js/pages/dashboard.js')}}"></script>
 <script src="{{asset('js/custom.js')}}"></script>
 <script>
-//   $.ajaxSetup({
-//     headers: {
-//         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-//     }
-// });
+
 </script>

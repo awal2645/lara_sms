@@ -7,8 +7,7 @@
             <!-- Modal -->
             <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
-                <form action="">
-
+                
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -17,11 +16,13 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-
+                            <form action="{{route('add.subject')}}" method="POST" id="form">
+                                @csrf
                             <div class="modal-body">
                                 <div class="errMsgContainer">
                                     
                                 </div>
+                                
                                 <div class="form-group ">
                                     <label for="inputEmail3" class="col-sm-2 col-form-label">Subject Name:-</label>
 
@@ -40,8 +41,8 @@
             </div>
             <!-- /.Modal -->
         <!--  card-body -->
-            <div class="card card-info mt-4">
-                <div class="card-header">
+            <div class="card card-info mt-4 row justify-content-center">
+                <div class="card-header ">
                     <h3 class="card-title">Files</h3>
 
                     <div class="card-tools">
@@ -50,20 +51,28 @@
                         </button>
                     </div>
                 </div>
-                <div class="card-body p-0" style="display: block;">
+                <div class="card-body p-0 justify-content-center col-6" style="display: block;">
                     <table class="table">
                         <thead>
                             <tr>
+                                <th> No </th>
                                 <th> subject </th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($subject as $item)
+                            @foreach ($subject as $key=>$item)
                             <tr>
+                                <td>{{ $key+1 }}</td>
                                 <td>{{ $item->sub_name }}</td>
                                 <td class="text-right py-0 align-middle">
                                     <div class="btn-group btn-group-sm">
-                                        <a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
+                                        <a href="#"
+                                         class="btn btn-info update_class_from"
+                                         data-toggle="modal"
+                                         data-target="#updateModal"
+                                         data-id="{{$item->id}}"
+                                         data-name="{{$item->sub_name}}"
+                                         ><i class="fas fa-eye"></i></a>
                                         <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                                     </div>
                                 </td>
@@ -72,10 +81,10 @@
                         </tbody>
                     </table>
                 </div>
-                
+                {{-- {{!!$subject->links()!!}} --}}
             </div>
         <!-- /.card-body -->
-
+        @include('components.editeSubject')
     <script>
         @if (Session::has('success'))
             toastr.options = {

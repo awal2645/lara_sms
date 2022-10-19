@@ -10,8 +10,9 @@ Route::get('/', function () {
 // admin route start
 Route::get('home' , [HomeController::class,'homePage'])->name('home.page');
 Route::get('setting' ,[SettingController::class,'settingPage'])->name('setting.page');
-Route::get('add/subject',[SubjectController::class,'addSubjectPage'])->name('add.subject.page');
-Route::post('add/subject/add',[SubjectController::class,'addSubject'])->name('add.subject');
+Route::get('subject/add',[SubjectController::class,'addSubjectPage'])->name('add.subject.page');
+Route::post('admin/subject/add',[SubjectController::class,'addSubject'])->name('add.subject');
+Route::post('admin/subject/update',[SubjectController::class,'updateSubject'])->name('update.subject');
 
 // admin route end
 require __DIR__.'/auth.php';
