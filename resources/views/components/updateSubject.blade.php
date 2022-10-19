@@ -1,4 +1,4 @@
- <!-- Modal -->
+    <!-- Modal -->
             <div class="modal fade " id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel"
                 aria-hidden="true">
                 
@@ -28,7 +28,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary update_subject">Save </button>
+                                <button type="button" class="btn btn-primary update_subject">update </button>
                             </div>
                         </div>
                     </div>
