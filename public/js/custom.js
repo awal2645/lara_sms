@@ -18,8 +18,9 @@ $(document).ready(function () {
             success:function(res){
                 if(res.status=='success'){
                     $('#exampleModal').modal('hide');
-                    $('#form')[0].reset();
-                    $('table').load(location.href+'.table');
+                    $('#form').trigger("reset");
+                    // $('table').load(location.href+'.table');
+                    $('table').html(res);
                     Command: toastr["success"]("Data Insert Done")
                         toastr.options = {
                             "closeButton": true,
@@ -95,7 +96,7 @@ $(document).ready(function () {
                     },
                     success:function(res){
                         if(res.status=='success'){
-                            $('table').load(location.href+' .table');
+                            window.location.reload();
                             Command: toastr["success"]("I do not think that means what you think it means.")
                             toastr.options = {
                                 "closeButton": true,

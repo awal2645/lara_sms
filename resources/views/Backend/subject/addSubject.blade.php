@@ -1,5 +1,6 @@
 @extends('layouts.admin-app')
 @section('content')
+@include('components.subject_head')
             <div class="row justify-content-center ">
                 <div class=" col-9 ">
                     <!-- Button trigger modal -->
@@ -44,59 +45,72 @@
                 </form>
             </div>
             <!-- /.Modal -->
-        <!--  card-body -->
-        <div class="row justify-content-center ">
-            <div class="card card-info mt-4 col-9">
-                <div class="card-header ">
-                    <h3 class="card-title">Subject list</h3>
-
-                    <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                            <i class="fas fa-minus"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="card-body p-0 justify-content-center  " style="display: block;">
-                    <table class="table text-center ">
-                        <thead>
+            <div class="container-fluid">
+                <div class="row">
+                  <div class="col-12">
+                   
+                    <!-- /.card -->
+        
+                    <div class="card">
+                      <div class="card-header">
+                        <h3 class="card-title">DataTable   </h3>
+                      </div>
+                      <!-- /.card-header -->
+                      <div class="card-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th> Serial No </th>
+                                    <th> subject </th>
+                                    <th> Action </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($subject as $key=>$item)
+                                <tr>
+                                    <td>{{ $key+1 }}</td>
+                                    <td>{{ $item->sub_name }}</td>
+                                    <td class="text-right py-0 align-middle">
+                                        <div class="btn-group btn-group-sm">
+                                            <a href="#"
+                                             class="btn btn-info update_class_from"
+                                             data-toggle="modal"
+                                             data-target="#updateModal"
+                                             data-id="{{$item->id}}"
+                                             data-name="{{$item->sub_name}}"
+                                             ><i class="fas fa-eye"></i></a>
+                                            <a href="{{route('delete.subject')}}" 
+                                            id="del" 
+                                            
+                                            class="btn btn-danger delete_sub_name"
+                                            data-id="{{$item->id}}"
+                                            ><i class="fas fa-trash"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                          <tfoot>
                             <tr>
                                 <th> Serial No </th>
                                 <th> subject </th>
                                 <th> Action </th>
                             </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($subject as $key=>$item)
-                            <tr>
-                                <td>{{ $key+1 }}</td>
-                                <td>{{ $item->sub_name }}</td>
-                                <td class="text-right py-0 align-middle">
-                                    <div class="btn-group btn-group-sm">
-                                        <a href="#"
-                                         class="btn btn-info update_class_from"
-                                         data-toggle="modal"
-                                         data-target="#updateModal"
-                                         data-id="{{$item->id}}"
-                                         data-name="{{$item->sub_name}}"
-                                         ><i class="fas fa-eye"></i></a>
-                                        <a href="{{route('delete.subject')}}" 
-                                        id="del"
-                                        class="btn btn-danger delete_sub_name"
-                                        id=""
-                                        data-id="{{$item->id}}"
-                                        ><i class="fas fa-trash"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                          </tfoot>
+                        </table>
+                      </div>
+                      <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                  </div>
+                  <!-- /.col -->
                 </div>
-                {{-- {{!!$subject->links()!!}} --}}
-            </div>
-        </div>
+                <!-- /.row -->
+              </div>
+              <!-- /.container-fluid -->
         <!-- /.card-body -->
         @include('components.updateSubject')  
+        @include('components.subject_scrpit')
     {{-- <script>
         @if (Session::has('success'))
             toastr.options = {
