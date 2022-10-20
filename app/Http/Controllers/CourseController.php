@@ -13,11 +13,11 @@ class CourseController extends Controller
         $request->validate(
             [
                 'course_name'=>'required|unique:courses',
-                'course_price'=>'required|unique'
+                'course_price'=>'required'
             ],
             [
                 'course_name.required'=>'Name is required',
-                'course_price.required'=>'Price is required',
+                'course_price.required'=>'Fees is required',
                 'course_name.unique'=>'This name already exists'
             ]
             );
@@ -29,4 +29,22 @@ class CourseController extends Controller
             'status'=>'success',
         ]);
      }
+    public function updateCourse(Request $request){
+        Course::where('id',$request->up_course_id)->update(
+            [
+                'course_name'=>$request->up_course_name,
+                'course_price'=>$request->up_course_price,   
+            ]);
+        return response()->json([
+                    'status'=>'success',
+         ]);
+    }
+    //delete  sucject function
+    public function deleteCourse(Request $request){
+        Course::find($request->del_course_id)->delete();
+        return response()->json([
+            'status'=>'success',
+        ]);
+    }
+    
 }

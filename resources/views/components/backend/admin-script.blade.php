@@ -28,5 +28,5 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('dist/js/pages/dashboard.js')}}"></script>
 <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
-<script src="{{asset('js/custom.js')}}"></script>
+<script src="{{asset('js/subject.js')}}"></script>
 <script src="{{asset('js/course.js')}}"></script>  

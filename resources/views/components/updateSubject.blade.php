@@ -19,7 +19,7 @@
                                 </div>
                                 
                                 <div class="form-group ">
-                                    <label for="inputEmail3" class="col-sm-2 col-form-label"> Update Subject Name:-</label>
+                                    <label for="up_sub_name" class="col-sm-12 col-form-label"> Update Subject Name:</label>
 
                                     <input type="text" name="up_sub_name" id="up_sub_name" class="form-control" id="update_sub_name"
                                         placeholder=" Update Subject Name" required>

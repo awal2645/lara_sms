@@ -1,18 +1,16 @@
 @extends('layouts.admin-app')
 @section('content')
 @include('components.subject_head')
-            <div class="row justify-content-center ">
-                <div class=" col-9 ">
+            
+                <div class="mb-3">
                     <!-- Button trigger modal -->
-                        <button type="button" class="btn  btn-info" data-toggle="modal" data-target="#exampleModal">
+                        <button type="button" class="btn btn-primary  " data-toggle="modal" data-target="#exampleModal">
                             Add Subject
                         </button>
                 </div>
-            </div>
             <!-- Modal -->
             <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
-                
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -29,11 +27,10 @@
                                 </div>
                                 
                                 <div class="form-group ">
-                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Subject Name:-</label>
+                                    <label for="inputEmail3" class="col-sm-12 col-form-label">Subject Name:-</label>
 
                                     <input type="text" name="sub_name" class="form-control" id="sub_name"
                                         placeholder="Subject Name" required>
-
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -48,16 +45,14 @@
             <div class="container-fluid">
                 <div class="row">
                   <div class="col-12">
-                   
                     <!-- /.card -->
-        
                     <div class="card">
                       <div class="card-header">
                         <h3 class="card-title">DataTable   </h3>
                       </div>
                       <!-- /.card-header -->
                       <div class="card-body">
-                        <table id="example1" class="table table-bordered table-striped">
+                        <table id="example1" class="table table-bordered table-striped refresh">
                             <thead>
                                 <tr>
                                     <th> Serial No </th>
@@ -107,6 +102,7 @@
                 </div>
                 <!-- /.row -->
               </div>
+            
               <!-- /.container-fluid -->
         <!-- /.card-body -->
         @include('components.updateSubject')  

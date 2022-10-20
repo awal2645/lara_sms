@@ -3,7 +3,7 @@
             <div class="row justify-content-center ">
                 <div class=" col-9 ">
                     <!-- Button trigger modal -->
-                        <button type="button" class="btn  btn-info" data-toggle="modal" data-target="#exampleModal">
+                        <button type="button" class="btn  btn-primary" data-toggle="modal" data-target="#exampleModal">
                             Add Course
                         </button>
                 </div>
@@ -20,7 +20,7 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form action="{{route('add.course')}}" method="POST" id="course-add-form">
+                            <form action="{{route('add.course')}}" method="POST" id="form">
                                 @csrf
                             <div class="modal-body">
                                 <div class="errMsgContainer">
@@ -28,12 +28,13 @@
                                 </div>
                                 <input type="hidden" name="redirect" value="{{route('add.course')}}">
                                 <div class="form-group ">
-                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Course Name:-</label>
+                                    <label for="course_name" class="col-sm-12 col-form-label pl-0">Course Name:</label>
 
                                     <input type="text" name="course_name" class="form-control " id="course_name"
                                         placeholder="Course Name" required>
-                                        <input type="number" name="course_price" class="form-control mt-3" id="course_price"
-                                        placeholder="Course Price" required>
+                                        <label for="course_price" class="col-sm-12 col-form-label pl-0">Course Fees:</label>
+                                        <input type="number" name="course_price" class="form-control" id="course_price"
+                                        placeholder="Course Fees" required>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -47,7 +48,7 @@
             <!-- /.Modal -->
         <!--  card-body -->
         <div class="row justify-content-center ">
-            <div class="card card-info mt-4 col-9">
+            <div class="card card-info mt-4 col-9 pt-2">
                 <div class="card-header ">
                     <h3 class="card-title">Course list</h3>
                     <div class="card-tools">
@@ -62,6 +63,7 @@
                             <tr>
                                 <th> Serial No </th>
                                 <th> Course </th>
+                                <th> Fees </th>
                                 <th> Action </th>
                             </tr>
                         </thead>
@@ -69,7 +71,8 @@
                             @foreach ($course as $key=>$item)
                             <tr>
                                 <td>{{ $key+1 }}</td>
-                                <td>{{ $item->sub_name }}</td>
+                                <td>{{ $item->course_name }}</td>
+                                <td>{{ $item->course_price }}</td>
                                 <td class="text-right py-0 align-middle">
                                     <div class="btn-group btn-group-sm">
                                         <a href="#"
@@ -77,11 +80,12 @@
                                          data-toggle="modal"
                                          data-target="#updateModal"
                                          data-id="{{$item->id}}"
-                                         data-name="{{$item->sub_name}}"
+                                         data-name="{{$item->course_name}}"
+                                         data-price="{{$item->course_price }}"
                                          ><i class="fas fa-eye"></i></a>
                                         <a href="{{route('delete.course')}}" 
                                         id="del"
-                                        class="btn btn-danger delete_sub_name"
+                                        class="btn btn-danger delete_course_name"
                                         id=""
                                         data-id="{{$item->id}}"
                                         ><i class="fas fa-trash"></i></a>
@@ -97,7 +101,6 @@
         </div>
         <!-- /.card-body -->
         @include('components.updatecourse')
-        
     {{-- <script>
         @if (Session::has('success'))
             toastr.options = {

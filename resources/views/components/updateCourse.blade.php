@@ -18,10 +18,11 @@ aria-hidden="true">
                 </div>
                 <div class="form-group ">
                     <label for="inputEmail3" class="col-sm-2 col-form-label"> Update Subject Name:-</label>
-                    <input type="text" name="up_course_name" id="up_sub_name" class="form-control" id="up_course_name"
+                    <input type="text" name="up_course_name" id="up_course_name" class="form-control" id="up_course_name"
                         placeholder=" Update Course Name" required>
+                        <label for="inputEmail3" class="col-sm-2 col-form-label"> Update Subject Fees:-</label>
                     <input type="text" name="up_course_price" id="up_course_price" class="form-control" id="up_course_price"
-                        placeholder=" Update Course price" required>
+                        placeholder=" Update Course Fees" required>
                 </div>
             </div>
             <div class="modal-footer">

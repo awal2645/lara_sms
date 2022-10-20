@@ -61,7 +61,7 @@
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
                 Course
-                <i class="right fas fa-angle-left"></i>
+               
               </p>
             </a>
             
