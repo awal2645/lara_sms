@@ -33,7 +33,7 @@
                                         placeholder="Subject Short Name" required>
                                     <label for="class_name" class="col-sm-12 col-form-label"> Select Class:</label>
                                     <select id="class_name" name="class_name" class="form-control" aria-label="Default select example">
-                                        <option selected>select class</option>
+                                        <option selected>Select class</option>
                                         @foreach ($class as $item)
                                         <option value="{{$item->class_name}}">{{$item->class_name}}</option>
                                         @endforeach
@@ -99,15 +99,16 @@
                                 @endforeach
                             </tbody>
                           <tfoot>
-                            <tr>
+                            <tr class="text-center">
                                 <th> Serial No </th>
-                                <th> subject </th>
+                                <th> Subject </th>
                                 <th> Short Name </th>
                                 <th> Class </th>
                                 <th> Action </th>
                             </tr>
                           </tfoot>
                         </table>
+                       
                       </div>
                       <!-- /.card-body -->
                     </div>
@@ -131,4 +132,5 @@
                 toastr.success("{{ 'Data added Successfully' }}")
         @endif
     </script> --}}
+   
 @endsection

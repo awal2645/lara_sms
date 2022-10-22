@@ -30,7 +30,7 @@
                                         placeholder="Class Name" required>
                                     <label for="class_fees" class="col-sm-12 col-form-label pl-0">Class Fees:</label>
                                     <input type="number" name="class_fees" class="form-control" id="class_fees"
-                                        placeholder="class Fees" required>
+                                        placeholder="Class Fees" required>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -91,14 +91,15 @@
                                 @endforeach
                             </tbody>
                           <tfoot>
-                            <tr>
+                            <tr class="text-center">
                             <th> Serial No </th>
-                            <th> class </th>
+                            <th> Class </th>
                             <th> Fees </th>
                             <th> Action </th>
                             </tr>
                           </tfoot>
                         </table>
+                        
                       </div>
                       <!-- /.card-body -->
                     </div>
