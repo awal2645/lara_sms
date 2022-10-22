@@ -57,11 +57,10 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{route('course.view.page')}}" class="nav-link">
+            <a href="{{route('class.view.page')}}" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
-                Course
-               
+                Class
               </p>
             </a>
             

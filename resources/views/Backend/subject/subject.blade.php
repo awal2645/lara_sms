@@ -1,8 +1,7 @@
 @extends('layouts.admin-app')
 @section('content')
-@include('components.subject_head')
-            
-                <div class="mb-3">
+@include('components.dataTable_head')
+                <div class="mb-3 ml-2">
                     <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary  " data-toggle="modal" data-target="#exampleModal">
                             Add Subject
@@ -23,14 +22,22 @@
                                 @csrf
                             <div class="modal-body">
                                 <div class="errMsgContainer">
-                                    
+                        
                                 </div>
-                                
                                 <div class="form-group ">
-                                    <label for="inputEmail3" class="col-sm-12 col-form-label">Subject Name:-</label>
-
+                                    <label for="sub_name" class="col-sm-12 col-form-label">Subject Name:</label>
                                     <input type="text" name="sub_name" class="form-control" id="sub_name"
                                         placeholder="Subject Name" required>
+                                    <label for="sub_short_name" class="col-sm-12 col-form-label">Subject Short Name:</label>
+                                    <input type="text" name="sub_short_name" class="form-control" id="sub_short_name"
+                                        placeholder="Subject Short Name" required>
+                                    <label for="class_name" class="col-sm-12 col-form-label"> Select Class:</label>
+                                    <select id="class_name" name="class_name" class="form-control" aria-label="Default select example">
+                                        <option selected>select class</option>
+                                        @foreach ($class as $item)
+                                        <option value="{{$item->class_name}}">{{$item->class_name}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -48,23 +55,27 @@
                     <!-- /.card -->
                     <div class="card">
                       <div class="card-header">
-                        <h3 class="card-title">DataTable   </h3>
+                        <h3 class="card-title"> Subject List </h3>
                       </div>
                       <!-- /.card-header -->
                       <div class="card-body">
                         <table id="example1" class="table table-bordered table-striped refresh">
                             <thead>
-                                <tr>
+                                <tr class="text-center">
                                     <th> Serial No </th>
-                                    <th> subject </th>
+                                    <th> Subject </th>
+                                    <th> Short Name </th>
+                                    <th> Class </th>
                                     <th> Action </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($subject as $key=>$item)
-                                <tr>
+                                <tr class="text-center">
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $item->sub_name }}</td>
+                                    <td>{{ $item->sub_short_name }}</td>
+                                    <td>{{ $item->class_name }}</td>
                                     <td class="text-right py-0 align-middle">
                                         <div class="btn-group btn-group-sm">
                                             <a href="#"
@@ -73,6 +84,8 @@
                                              data-target="#updateModal"
                                              data-id="{{$item->id}}"
                                              data-name="{{$item->sub_name}}"
+                                             data-short_name="{{$item->sub_short_name}}"
+                                             data-class_name="{{$item->class_name}}"
                                              ><i class="fas fa-eye"></i></a>
                                             <a href="{{route('delete.subject')}}" 
                                             id="del" 
@@ -89,6 +102,8 @@
                             <tr>
                                 <th> Serial No </th>
                                 <th> subject </th>
+                                <th> Short Name </th>
+                                <th> Class </th>
                                 <th> Action </th>
                             </tr>
                           </tfoot>
@@ -106,7 +121,7 @@
               <!-- /.container-fluid -->
         <!-- /.card-body -->
         @include('components.updateSubject')  
-        @include('components.subject_scrpit')
+        @include('components.dataTable_scrpit')
     {{-- <script>
         @if (Session::has('success'))
             toastr.options = {

@@ -5,17 +5,17 @@ $(document).ready(function () {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    $('.add_course_button').click(function (e) {
+    $('.add_class_button').click(function (e) {
         e.preventDefault();
-        let course_name = $('#course_name').val();
-        let course_price = $('#course_price').val();
+        let class_name = $('#class_name').val();
+        let class_fees = $('#class_fees').val();
         let url = $('#form').attr('action');
         $.ajax({
             url:url,
             method:'POST',
             data:{
-                course_name:course_name,
-                course_price:course_price,
+                class_name:class_name,
+                class_fees:class_fees,
             },
             success:function(res){
                 if(res.status=='success'){
@@ -49,35 +49,36 @@ $(document).ready(function () {
             }
         });
     });
-    // show update subject name Value
-    $(document).on('click','.update_course_from',function(){
+    // show update class name Value
+    $(document).on('click','.update_class_from',function(){
         let id=$(this).data('id');
         let name=$(this).data('name');
         let price=$(this).data('price');
-        $('#up_course_id').val(id);
-        $('#up_course_name').val(name);
-        $('#up_course_price').val(price);
+        $('#up_class_id').val(id);
+        $('#up_class_name').val(name);
+        $('#up_class_fees').val(price);
     });
-    // update subject name Value
-    $('.course_name_button').click(function (e) {
+    // update class name Value
+    $('.update_class_button').click(function (e) {
         e.preventDefault();
-        let up_course_id = $('#up_course_id').val();
-        let up_course_name = $('#up_course_name').val();
-        let up_course_price = $('#up_course_price').val();
+        let up_class_id = $('#up_class_id').val();
+        let up_class_name = $('#up_class_name').val();
+        let up_class_fees = $('#up_class_fees').val();
         let url = $('#updateform').attr('action');
         $.ajax({
             url:url,
             method:'POST',
             data:{
-                up_course_id:up_course_id,
-                up_course_name:up_course_name,
-                up_course_price:up_course_price,  
+                up_class_id:up_class_id,
+                up_class_name:up_class_name,
+                up_class_fees:up_class_fees,  
             },
             success:function(res){
                 if(res.status=='success'){
                     $('#updateModal').modal('hide');
                     $('#updateform')[0].reset();
                     $('table').load(location.href+' .table');
+                    window.location.reload();
                     Command: toastr["success"]("Delete Data");
                          toastr.options = {
                             "closeButton": true,
@@ -105,21 +106,22 @@ $(document).ready(function () {
             }
         });
     });
-    // delete subject name Value
-    $('.delete_course_name').click(function (e) {
+    // delete class name Value
+    $('.delete_class_name').click(function (e) {
         e.preventDefault();
-        let del_course_id = $(this).data('id');
+        let del_class_id = $(this).data('id');
         let url = $('#del').attr('href');
         if(confirm('Are you Sure Delete It')){
                 $.ajax({
                     url:url,
                     method:'POST',
                     data:{
-                        del_course_id:del_course_id,    
+                        del_class_id:del_class_id,    
                     },
                 success:function(res){
                      if(res.status=='success'){
                          $('table').load(location.href+' .table');
+                         window.location.reload();
                          Command: toastr["success"]("Delete Data");
                          toastr.options = {
                             "closeButton": true,
