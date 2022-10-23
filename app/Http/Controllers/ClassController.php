@@ -8,7 +8,7 @@ class ClassController extends Controller
 {
     public function classViewpage(){
         $class=Classe::all();
-        return view('Backend.class.class',with(compact('class')));
+        return view('Backend.Class.class',with(compact('class')));
     }
     //add class function
     public function addClass(Request $request){

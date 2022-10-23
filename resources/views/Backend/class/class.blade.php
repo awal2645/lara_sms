@@ -111,7 +111,7 @@
               </div>
               <!-- /.container-fluid -->
         <!-- /.card-body -->
-        @include('components.updateClass')
+        @include('Backend.class.updateClass')
         @include('components.dataTable_scrpit')
     {{-- <script>
         @if (Session::has('success'))

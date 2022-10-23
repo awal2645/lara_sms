@@ -10,9 +10,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 // admin route start
-Route::get('home',[HomeController::class,'homePage'])->name('home.page');
-Route::get('setting',[SettingController::class,'settingPage'])->name('setting.page');
-Route::get('subject/add',[SubjectController::class,'viewSubjectPage'])->name('add.subject.page');
+Route::get('home',[HomeController::class,'homeViewPage'])->name('home.view.page');
+Route::get('setting',[SettingController::class,'settingViewPage'])->name('setting.view.page');
+Route::get('subject',[SubjectController::class,'subjectViewPage'])->name('subject.view.page');
 Route::post('subject/add',[SubjectController::class,'addSubject'])->name('add.subject');
 Route::post('subject/update',[SubjectController::class,'updateSubject'])->name('update.subject');
 Route::post('subject/delete',[SubjectController::class,'deleteSubject'])->name('delete.subject');

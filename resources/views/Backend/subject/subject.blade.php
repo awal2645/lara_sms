@@ -121,7 +121,7 @@
             
               <!-- /.container-fluid -->
         <!-- /.card-body -->
-        @include('components.updateSubject')  
+        @include('Backend.subject.updateSubject')  
         @include('components.dataTable_scrpit')
     {{-- <script>
         @if (Session::has('success'))

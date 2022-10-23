@@ -1,19 +1,16 @@
 <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="{{route('home.view.page')}}" class="brand-link">
       <img src="{{asset('dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">TEXLAB IT</span>
     </a>
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="{{asset('dist/img/user3-128x128.jpg')}}" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-          <a href="#" class="d-block">TEXLAB IT</a>
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex"  >
+        <div class="image" >
+          <img src="{{asset('dist/img/user3-128x128.jpg')}}" class="img-circle " alt="User Image" style="width: 10.1rem;border-radius:0%" >
         </div>
       </div>
       <!-- SidebarSearch Form -->
@@ -33,31 +30,32 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="{{route('home.page')}}" class="nav-link active">
+            <a href="{{route('home.view.page')}}" class="nav-link {{ (request()->is('/home')) ? 'active' : '' }}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="{{route('setting.page')}}" class="nav-link">
+          <li class="nav-item ">
+            <a href="{{route('setting.view.page')}}" class="nav-link {{ (request()->is('setting')) ? 'active' : '' }}">
               <i class="nav-icon fas fa-th"></i>
+              
               <p>
                 Setting
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{route('add.subject.page')}}" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
+            <a href="{{route('subject.view.page')}}" class="nav-link {{ (request()->is('subject')) ? 'active' : '' }}">
+              <i class="nav-icon fas fa-book"></i>
               <p>
                 Subject
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{route('class.view.page')}}" class="nav-link">
+            <a href="{{route('class.view.page')}}" class="nav-link {{ (request()->is('class')) ? 'active' : '' }}">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
                 Class
@@ -66,8 +64,8 @@
             
           </li>
           <li class="nav-item">
-            <a href="{{route('section.view.page')}}" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
+            <a href="{{route('section.view.page')}}" class="nav-link {{ (request()->is('section')) ? 'active' : '' }}">
+              <i class="nav-icon far fa-plus-square"></i>
               <p>
                 Section
               </p>

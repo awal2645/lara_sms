@@ -7,10 +7,10 @@ use App\Models\Subject;
 use Illuminate\Http\Request;
 class SubjectController extends Controller
 {
-    public function viewSubjectPage(){
+    public function subjectViewPage(){
         $subject= Subject::all();
         $class = Classe::all();
-        return view('Backend.subject.subject')->with(['subject'=>$subject, 'class'=>$class]);
+        return view('Backend.Subject.subject')->with(['subject'=>$subject, 'class'=>$class]);
     }
      //  add sucject function
     public function addSubject(Request $request){
