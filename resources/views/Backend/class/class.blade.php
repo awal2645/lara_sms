@@ -56,7 +56,7 @@
                             <thead>
                                 <tr class="text-center">
                                     <th> Serial No </th>
-                                    <th> class </th>
+                                    <th> Class </th>
                                     <th> Fees </th>
                                     <th> Action </th>
                                 </tr>
