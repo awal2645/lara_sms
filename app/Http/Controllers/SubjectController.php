@@ -49,7 +49,7 @@ class SubjectController extends Controller
             ]);
      }
         //delete  sucject function
-    public function deleteSubject(Request $request){
+    public function deleteSection(Request $request){
         Subject::find($request->del_sub_id)->delete();
         return response()->json([
             'status'=>'success',

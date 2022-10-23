@@ -30,3 +30,4 @@
 <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
 <script src="{{asset('js/subject.js')}}"></script>
 <script src="{{asset('js/class.js')}}"></script>  
+<script src="{{asset('js/section.js')}}"></script>
