@@ -69,10 +69,8 @@
                                 @foreach ($section as $key=>$item)
                                 <tr class="text-center">
                                     <td>{{ $key+1 }}</td>
-                                    <td>{{ $item->section_name }}</td> 
-                                    @foreach($class->where('id',$item->class_id) as $cls)
-                                    <td>{{ $cls->class_name }}</td>
-                                    @endforeach
+                                    <td>{{ $item->section_name }}</td>
+                                    <td>{{ $item->my_class->class_name }}</td>
                                     <td class="text-right py-0 align-middle">
                                         <div class="btn-group btn-group-sm">
                                             <a href="#"

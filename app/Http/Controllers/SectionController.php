@@ -43,7 +43,7 @@ class SectionController extends Controller
             'status'=>'success',
         ]);
  }
-     public function deleteSubject(Request $request){
+     public function deleteSection(Request $request){
         Section::find($request->del_section_id)->delete();
         return response()->json([
             'status'=>'success',
