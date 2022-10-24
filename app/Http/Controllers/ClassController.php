@@ -15,7 +15,7 @@ class ClassController extends Controller
         $request->validate(
             [
                 'class_name'=>'required|unique:classes',
-                'class_fees'=>'required'
+                'class_fees'=>'required|integer|min:0',
             ],
             [
                 'class_name.required'=>'Name is required',
@@ -47,6 +47,9 @@ class ClassController extends Controller
         Classe::find($request->del_class_id)->delete();
         return response()->json([
             'status'=>'success',
+        ])->with('message', [
+            'type' => 'Success',
+            'text' => 'Added successfully',
         ]);
     }
     

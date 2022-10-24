@@ -24,6 +24,7 @@
   <!-- summernote -->
   <link rel="stylesheet" href=" {{asset('plugins/summernote/summernote-bs4.min.css')}}">
   <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+  <link rel="stylesheet" href="{{asset('css/custom-styles.css')}}">
   <!-- jQuery -->
   <script src=" {{asset('plugins/jquery/jquery.min.js')}}"></script>
   <!-- jQuery UI 1.11.4 -->

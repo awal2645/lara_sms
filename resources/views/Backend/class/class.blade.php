@@ -30,7 +30,7 @@
                                         placeholder="Class Name" required>
                                     <label for="class_fees" class="col-sm-12 col-form-label pl-0">Class Fees:</label>
                                     <input type="number" name="class_fees" class="form-control" id="class_fees"
-                                        placeholder="Class Fees" required>
+                                        placeholder="Class Fees" min="0" required>
                                 </div>
                             </div>
                             <div class="modal-footer">

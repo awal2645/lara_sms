@@ -47,14 +47,6 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{route('subject.view.page')}}" class="nav-link {{ (request()->is('subject')) ? 'active' : '' }}">
-              <i class="nav-icon fas fa-book"></i>
-              <p>
-                Subject
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
             <a href="{{route('class.view.page')}}" class="nav-link {{ (request()->is('class')) ? 'active' : '' }}">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
@@ -70,7 +62,14 @@
                 Section
               </p>
             </a>
-            
+          </li>
+          <li class="nav-item">
+            <a href="{{route('subject.view.page')}}" class="nav-link {{ (request()->is('subject')) ? 'active' : '' }}">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Subject
+              </p>
+            </a>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">

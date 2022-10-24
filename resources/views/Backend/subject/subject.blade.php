@@ -1,12 +1,21 @@
 @extends('layouts.admin-app')
 @section('content')
 @include('components.dataTable_head')
-                <div class="mb-3 ml-2">
-                    <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary  " data-toggle="modal" data-target="#exampleModal">
-                            Add Subject
-                        </button>
-                </div>
+            @if (empty($class))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Class list is empty</strong> Please add a <a href="{{ route('class.view.page') }}">class</a>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @else
+            <div class="mb-3 ml-2">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary  " data-toggle="modal" data-target="#exampleModal">
+                    Add Section
+                </button>
+            </div>
+            @endif
             <!-- Modal -->
             <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
@@ -31,11 +40,11 @@
                                     <label for="sub_short_name" class="col-sm-12 col-form-label">Subject Short Name:</label>
                                     <input type="text" name="sub_short_name" class="form-control" id="sub_short_name"
                                         placeholder="Subject Short Name" required>
-                                    <label for="class_name" class="col-sm-12 col-form-label"> Select Class:</label>
-                                    <select id="class_name" name="class_name" class="form-control" aria-label="Default select example">
-                                        <option selected>Select class</option>
+                                    <label for="class_id" class="col-sm-12 col-form-label"> Select Class:</label>
+                                    <select id="class_id" name="class_id" class="form-control" aria-label="Default select example">
+                                        <option value="0">Select class</option>
                                         @foreach ($class as $item)
-                                        <option value="{{$item->class_name}}">{{$item->class_name}}</option>
+                                        <option value="{{$item->id}}">{{$item->class_name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -75,7 +84,7 @@
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $item->sub_name }}</td>
                                     <td>{{ $item->sub_short_name }}</td>
-                                    <td>{{ $item->class_name }}</td>
+                                    <td>{{ $item->my_class->class_name  }}</td>
                                     <td class="text-right py-0 align-middle">
                                         <div class="btn-group btn-group-sm">
                                             <a href="#"
@@ -85,7 +94,7 @@
                                              data-id="{{$item->id}}"
                                              data-name="{{$item->sub_name}}"
                                              data-short_name="{{$item->sub_short_name}}"
-                                             data-class_name="{{$item->class_name}}"
+                                             data-class_id="{{$item->class_id}}"
                                              ><i class="fas fa-eye"></i></a>
                                             <a href="{{route('delete.subject')}}" 
                                             id="del" 

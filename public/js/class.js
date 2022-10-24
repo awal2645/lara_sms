@@ -21,25 +21,14 @@ $(document).ready(function () {
                 if(res.status=='success'){
                     $('#exampleModal').modal('hide');
                     $('#form')[0].reset();
-                    window.location.reload();
-                    Command: toastr["success"]("Data Insert Done")
-                        toastr.options = {
-                            "closeButton": true,
-                            "debug": false,
-                            "newestOnTop": true,
-                            "progressBar": true,
-                            "positionClass": "toast-top-right",
-                            "preventDuplicates": true,
-                            "onclick": null,
-                            "showDuration": "300",
-                            "hideDuration": "1000",
-                            "timeOut": "5000",
-                            "extendedTimeOut": "1000",
-                            "showEasing": "swing",
-                            "hideEasing": "linear",
-                            "showMethod": "fadeIn",
-                            "hideMethod": "fadeOut"
-                        }
+                    swal({
+                        title: "Good job!",
+                        icon: "success",
+                        button: "Aww yiss!",
+                      });
+                      setTimeout(function(){
+                        window.location.reload(1);
+                     }, 5000);  
                 }
             },error:function(err){
                 let error=err.responseJSON;
@@ -78,25 +67,14 @@ $(document).ready(function () {
                     $('#updateModal').modal('hide');
                     $('#updateform')[0].reset();
                     $('table').load(location.href+' .table');
-                    window.location.reload();
-                    Command: toastr["success"]("Delete Data");
-                         toastr.options = {
-                            "closeButton": true,
-                            "debug": false,
-                            "newestOnTop": true,
-                            "progressBar": true,
-                            "positionClass": "toast-top-right",
-                            "preventDuplicates": true,
-                            "onclick": null,
-                            "showDuration": "300",
-                            "hideDuration": "1000",
-                            "timeOut": "5000",
-                            "extendedTimeOut": "1000",
-                            "showEasing": "swing",
-                            "hideEasing": "linear",
-                            "showMethod": "fadeIn",
-                            "hideMethod": "fadeOut"
-                        }
+                    swal({
+                        title: "Good job!",
+                        icon: "success",
+                        button: "Aww yiss!",
+                      });
+                      setTimeout(function(){
+                        window.location.reload(1);
+                     }, 5000);  
                 }
             },error:function(err){
                 let error=err.responseJSON;
@@ -111,7 +89,15 @@ $(document).ready(function () {
         e.preventDefault();
         let del_class_id = $(this).data('id');
         let url = $('#del').attr('href');
-        if(confirm('Are you Sure Delete It')){
+        swal({
+            title: "Are you sure?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            console.log(willDelete);
+            if(willDelete){
                 $.ajax({
                     url:url,
                     method:'POST',
@@ -122,24 +108,6 @@ $(document).ready(function () {
                      if(res.status=='success'){
                          $('table').load(location.href+' .table');
                          window.location.reload();
-                         Command: toastr["success"]("Delete Data");
-                         toastr.options = {
-                            "closeButton": true,
-                            "debug": false,
-                            "newestOnTop": true,
-                            "progressBar": true,
-                            "positionClass": "toast-top-right",
-                            "preventDuplicates": true,
-                            "onclick": null,
-                            "showDuration": "300",
-                            "hideDuration": "1000",
-                            "timeOut": "5000",
-                            "extendedTimeOut": "1000",
-                            "showEasing": "swing",
-                            "hideEasing": "linear",
-                            "showMethod": "fadeIn",
-                            "hideMethod": "fadeOut"
-                        }
                     }
                 },error:function(err){
                     let error=err.responseJSON;
@@ -148,6 +116,8 @@ $(document).ready(function () {
                     });
                 }
             });
-        };
+         };
+    
+        });
     });
 });

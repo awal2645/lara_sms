@@ -9,7 +9,7 @@ $(document).ready(function () {
         e.preventDefault();
         let sub_name = $('#sub_name').val();
         let sub_short_name = $('#sub_short_name').val();
-        let class_name = $('#class_name').val();
+        let class_id = $('#class_id').val();
         let url = $('#form').attr('action');
         $.ajax({
             url:url,
@@ -17,32 +17,22 @@ $(document).ready(function () {
             data:{
                 sub_name:sub_name,
                 sub_short_name:sub_short_name,
-                class_name:class_name,
+                class_id:class_id,
             },
         success:function(res){
             if(res.status=='success'){
                 $('#exampleModal').modal('hide');
                 $('#form').trigger("reset");
                 // $('table').load(location.href+'.table');
-                window.location.reload();
-                Command: toastr["success"]("Data Insert Done")
-                    toastr.options = {
-                        "closeButton": true,
-                        "debug": false,
-                        "newestOnTop": true,
-                        "progressBar": true,
-                        "positionClass": "toast-top-right",
-                        "preventDuplicates": true,
-                        "onclick": null,
-                        "showDuration": "300",
-                        "hideDuration": "1000",
-                        "timeOut": "5000",
-                        "extendedTimeOut": "1000",
-                        "showEasing": "swing",
-                        "hideEasing": "linear",
-                        "showMethod": "fadeIn",
-                        "hideMethod": "fadeOut"
-                       }
+                swal({
+                    title: "Good job!",
+                    text: "You clicked the button!",
+                    icon: "success",
+                    button: "Aww yiss!",
+                  });
+                  setTimeout(function(){
+                    window.location.reload(1);
+                 }, 5000);  
             }
          },error:function(err){
             let error=err.responseJSON;
@@ -85,25 +75,15 @@ $('.update_subject').click(function (e) {
                 $('#updateModal').modal('hide');
                 $('#updateform')[0].reset();
                 $('table').load(location.href+' .table');
-                window.location.reload();
-                Command: toastr["success"]("Delete Data");
-                    toastr.options = {
-                        "closeButton": true,
-                        "debug": false,
-                        "newestOnTop": true,
-                        "progressBar": true,
-                        "positionClass": "toast-top-right",
-                        "preventDuplicates": true,
-                        "onclick": null,
-                        "showDuration": "300",
-                        "hideDuration": "1000",
-                        "timeOut": "5000",
-                        "extendedTimeOut": "1000",
-                        "showEasing": "swing",
-                        "hideEasing": "linear",
-                        "showMethod": "fadeIn",
-                        "hideMethod": "fadeOut"
-                    }
+                swal({
+                    title: "Good job!",
+                    text: "You clicked the button!",
+                    icon: "success",
+                    button: "Aww yiss!",
+                  });
+                  setTimeout(function(){
+                    window.location.reload(1);
+                 }, 5000);  
                 }
             },error:function(err){
                 let error=err.responseJSON;
@@ -118,7 +98,15 @@ $('.update_subject').click(function (e) {
         e.preventDefault();
         let del_sub_id = $(this).data('id');
         let url = $('#del').attr('href');
-        if(confirm('Are you Sure Delete It')){
+        swal({
+            title: "Are you sure?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            console.log(willDelete);
+            if(willDelete){
                 $.ajax({
                     url:url,
                     method:'POST',
@@ -128,24 +116,7 @@ $('.update_subject').click(function (e) {
                     success:function(res){
                         if(res.status=='success'){
                             window.location.reload();
-                            Command: toastr["success"]("Delete Data!")
-                            toastr.options = {
-                                "closeButton": true,
-                                "debug": false,
-                                "newestOnTop": true,
-                                "progressBar": true,
-                                "positionClass": "toast-top-right",
-                                "preventDuplicates": true,
-                                "onclick": null,
-                                "showDuration": "300",
-                                "hideDuration": "1000",
-                                "timeOut": "5000",
-                                "extendedTimeOut": "1000",
-                                "showEasing": "swing",
-                                "hideEasing": "linear",
-                                "showMethod": "fadeIn",
-                                "hideMethod": "fadeOut"
-                            }   
+                            
                         }
                     },error:function(err){
                         let error=err.responseJSON;
@@ -155,5 +126,7 @@ $('.update_subject').click(function (e) {
                     }
                });
         };
+    
+});
     });
 });

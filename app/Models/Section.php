@@ -9,7 +9,9 @@ class Section extends Model
 {
     use HasFactory;
     protected $table='sections';
-    protected $fillable = [
+
+    protected $fillable = 
+    [
         'section_name', 'class_id',
     ];
     // one to one relation 

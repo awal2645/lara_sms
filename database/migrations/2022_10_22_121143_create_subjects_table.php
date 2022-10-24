@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('sub_name');
             $table->string('sub_short_name');
-            $table->string('class_name');
+            $table->integer('class_id')->unsigned();
+            $table->foreign('class_id')->references('id')->on('classes')->onDelete('cascade');
             $table->timestamps();
         });
     }
