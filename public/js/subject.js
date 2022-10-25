@@ -23,7 +23,7 @@ $(document).ready(function () {
             if(res.status=='success'){
                 $('#exampleModal').modal('hide');
                 $('#form').trigger("reset");
-                // $('table').load(location.href+'.table');
+                $('table').load(location.href+'.table');
                 swal({
                     title: "Good job!",
                     text: "You clicked the button!",
@@ -32,7 +32,7 @@ $(document).ready(function () {
                   });
                   setTimeout(function(){
                     window.location.reload(1);
-                 }, 5000);  
+                 }, 3000);  
             }
          },error:function(err){
             let error=err.responseJSON;
@@ -83,7 +83,7 @@ $('.update_subject').click(function (e) {
                   });
                   setTimeout(function(){
                     window.location.reload(1);
-                 }, 5000);  
+                 }, 3000);  
                 }
             },error:function(err){
                 let error=err.responseJSON;
@@ -115,7 +115,15 @@ $('.update_subject').click(function (e) {
                     },
                     success:function(res){
                         if(res.status=='success'){
-                            window.location.reload();
+                            $('table').load(location.href+'.table');
+                            swal({
+                                title: "Good job!",
+                                icon: "success",
+                                button: "Aww yiss!",
+                              });
+                              setTimeout(function(){
+                                window.location.reload(1);
+                             }, 3000); 
                             
                         }
                     },error:function(err){

@@ -81,7 +81,11 @@
                                     <tr class="text-center">
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $item->section_name }}</td>
-                                        <td>{{ $item->my_class->class_name }}</td>
+                                        @if (empty($item->my_class->class_name))
+                                        <td>{{ $item->class_id}}</td> 
+                                        @else
+                                        <td>{{ $item->my_class->class_name}}</td>
+                                        @endif
                                         <td class="text-right py-0 align-middle">
                                             <div class="btn-group btn-group-sm">
                                                 <a href="#" class="btn btn-info update_class_from" data-toggle="modal"

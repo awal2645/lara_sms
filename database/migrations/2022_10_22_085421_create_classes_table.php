@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('class_name');
             $table->integer('class_fees');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

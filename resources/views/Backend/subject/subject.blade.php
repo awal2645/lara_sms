@@ -84,7 +84,11 @@
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $item->sub_name }}</td>
                                     <td>{{ $item->sub_short_name }}</td>
-                                    <td>{{ $item->my_class->class_name  }}</td>
+                                    @if (empty($item->my_class->class_name))
+                                    <td>{{ $item->class_id}}</td> 
+                                    @else
+                                    <td>{{ $item->my_class->class_name}}</td>
+                                    @endif
                                     <td class="text-right py-0 align-middle">
                                         <div class="btn-group btn-group-sm">
                                             <a href="#"
@@ -98,7 +102,6 @@
                                              ><i class="fas fa-eye"></i></a>
                                             <a href="{{route('delete.subject')}}" 
                                             id="del" 
-                                            
                                             class="btn btn-danger delete_sub_name"
                                             data-id="{{$item->id}}"
                                             ><i class="fas fa-trash"></i></a>
@@ -117,7 +120,6 @@
                             </tr>
                           </tfoot>
                         </table>
-                       
                       </div>
                       <!-- /.card-body -->
                     </div>
@@ -127,7 +129,6 @@
                 </div>
                 <!-- /.row -->
               </div>
-            
               <!-- /.container-fluid -->
         <!-- /.card-body -->
         @include('Backend.subject.updateSubject')  
@@ -141,5 +142,4 @@
                 toastr.success("{{ 'Data added Successfully' }}")
         @endif
     </script> --}}
-   
 @endsection

@@ -20,6 +20,8 @@ Route::get('class',[ClassController::class,'classViewpage'])->name('class.view.p
 Route::post('class/add',[ClassController::class,'addClass'])->name('add.class');
 Route::post('class/update',[ClassController::class,'updateClass'])->name('update.class');
 Route::post('class/delete',[ClassController::class,'deleteClass'])->name('delete.class');
+Route::get('class/trash',[ClassController::class,'trash'])->name('trash.class');
+Route::get('class/restore',[ClassController::class,'restore'])->name('restore.class');
 Route::get('section', [SectionController::class,'sectionViewPage'])->name('section.view.page');
 Route::post('section/add', [SectionController::class,'addSection'])->name('add.section');
 Route::post('section/update', [SectionController::class,'updateSection'])->name('update.section');

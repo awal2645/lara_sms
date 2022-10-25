@@ -1,23 +1,22 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Classe;
-use App\Models\Subject;
 use Illuminate\Http\Request;
 use App\Repositories\Subjectrepository;
+use App\Repositories\ClassRepository;
 class SubjectController extends Controller
 {
-    protected $data;
+    protected $subject,$class;
 
-    public function __construct(Subjectrepository $Subjectrepository)
+    public function __construct(Subjectrepository $Subjectrepository,ClassRepository $ClassRepository)
     {
-        $this->data = $Subjectrepository;   
+        $this->subject = $Subjectrepository; 
+        $this->class = $ClassRepository;  
     }
 
     public function subjectViewPage(){
-        $subject = $this->data->all();
-        $class = Classe::all();
+        $subject = $this->subject->all();
+        $class = $this->class->all();
         return view('Backend.Subject.subject')->with(['subject'=>$subject, 'class'=>$class]);
     }
 
@@ -36,7 +35,7 @@ class SubjectController extends Controller
                 'sub_name.unique'=>'This name already exists '
             ]
         );
-        $db_add_subject= $this->data->store();
+        $db_add_subject= $this->subject->store();
         $db_add_subject->sub_name=$request->sub_name;
         $db_add_subject->sub_short_name=$request->sub_short_name;
         $db_add_subject->class_id=$request->class_id;
@@ -47,11 +46,10 @@ class SubjectController extends Controller
      }
     //  update  sucject function
      public function updateSubject(Request $request){
-        Subject::where('id',$request->up_sub_id)->update(
+        $this->datsubjecta->update()->where('id',$request->up_sub_id)->update(
                 [
                     'sub_name'=>$request->up_sub_name,
-                    'sub_short_name'=>$request->up_sub_short_name
-                    
+                    'sub_short_name'=>$request->up_sub_short_name,
                 ]);
             return response()->json([
                 'status'=>'success',
@@ -59,7 +57,7 @@ class SubjectController extends Controller
      }
         //delete  sucject function
     public function deleteSubject(Request $request){
-        Subject::find($request->del_sub_id)->delete();
+        $this->subject->delete()->find($request->del_sub_id)->delete();
         return response()->json([
             'status'=>'success',
         ]);

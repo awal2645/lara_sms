@@ -28,7 +28,7 @@ $(document).ready(function () {
                       });
                       setTimeout(function(){
                         window.location.reload(1);
-                     }, 5000);  
+                     }, 3000);  
                 }
             },error:function(err){
                 let error=err.responseJSON;
@@ -74,7 +74,7 @@ $(document).ready(function () {
                       });
                       setTimeout(function(){
                         window.location.reload(1);
-                     }, 5000);  
+                     }, 3000);  
                 }
             },error:function(err){
                 let error=err.responseJSON;
@@ -107,7 +107,15 @@ $(document).ready(function () {
                 success:function(res){
                      if(res.status=='success'){
                          $('table').load(location.href+' .table');
-                         window.location.reload();
+                         swal({
+                            title: "Good job!",
+                            text: "You clicked the button!",
+                            icon: "success",
+                            button: "Aww yiss!",
+                          });
+                          setTimeout(function(){
+                            window.location.reload(1);
+                         }, 3000); 
                     }
                 },error:function(err){
                     let error=err.responseJSON;
