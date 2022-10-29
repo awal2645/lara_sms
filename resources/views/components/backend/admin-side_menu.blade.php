@@ -40,7 +40,6 @@
           <li class="nav-item ">
             <a href="{{route('setting.view.page')}}" class="nav-link {{ (request()->is('setting')) ? 'active' : '' }}">
               <i class="nav-icon fas fa-th"></i>
-              
               <p>
                 Setting
               </p>
@@ -53,7 +52,6 @@
                 Class
               </p>
             </a>
-            
           </li>
           <li class="nav-item">
             <a href="{{route('section.view.page')}}" class="nav-link {{ (request()->is('section')) ? 'active' : '' }}">
@@ -76,6 +74,14 @@
               <i class="nav-icon fas fa-edit"></i>
               <p>
                 Trash
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('student.view.page')}}" class="nav-link">
+              <i class=" nav-icon fa-solid fa-user"></i>
+              <p>
+                Student
               </p>
             </a>
           </li>

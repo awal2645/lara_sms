@@ -4,6 +4,7 @@ use App\Http\Controllers\ClassController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
 use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
@@ -26,6 +27,7 @@ Route::get('section', [SectionController::class,'sectionViewPage'])->name('secti
 Route::post('section/add', [SectionController::class,'addSection'])->name('add.section');
 Route::post('section/update', [SectionController::class,'updateSection'])->name('update.section');
 Route::post('section/delete', [SectionController::class,'deleteSection'])->name('delete.section');
+Route::get('student', [StudentController::class,'studentViewPage'])->name('student.view.page');
 
 // admin route end
 require __DIR__.'/auth.php';
