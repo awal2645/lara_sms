@@ -35,10 +35,10 @@
 
                         </div>
                         <div class="form-group col-3">
-                            <label for="section_name" class="col-sm-12 col-form-label">Student Name:</label>
-                            <input type="text" name="section_name" class="form-control" id="section_name"
-                                placeholder="Section Name" required>
-                            <label for="class_id" class="col-sm-12 col-form-label"> Class:</label>
+                            <label for="student_name" class="col-sm-12 col-form-label">Student Name:</label>
+                            <input type="text" name="student_name" class="form-control" id="student_name"
+                                placeholder="Student Name" required>
+                            <label for="class_id" class="col-sm-12 col-form-label">Select Class:</label>
                             <select id="class_id" name="class_id" class="form-control" aria-label="Default select example">
                                 <option selected>Select class</option>
                                 @foreach ($class as $item)
@@ -47,28 +47,32 @@
                             </select>
                         </div>
                         <div class="form-group col-3">
-                            <label for="class_id" class="col-sm-12 col-form-label"> Student Email:</label>
-                            <input type="text" name="section_name" class="form-control" id="section_name"
+                            <label for="student_email" class="col-sm-12 col-form-label"> Student student_email:</label>
+                            <input type="email" name="student_email" class="form-control" id="student_email"
                             placeholder="Section Name" required>
-                            <label for="class_id" class="col-sm-12 col-form-label"> Student Roll ID:</label>
-                            <input type="text" name="section_name" class="form-control" id="section_name"
-                                placeholder="Section Name" required>
-                        </div>
-                        <div class="form-group col-3">
-                            <label for="class_id" class="col-sm-12 col-form-label"> Student Admission ID:</label>
-                            <input type="number" name="section_name" class="form-control" id="section_name"
-                                placeholder="Section Name" required>
-                            <label for="class_id" class="col-sm-12 col-form-label"> Student Gender:</label>
+                            <label for="section_name" class="col-sm-12 col-form-label">Student Section:</label>
                             <select id="class_id" name="class_id" class="form-control" aria-label="Default select example">
-                                <option selected>Student class</option>
-                                @foreach ($class as $item)
-                                    <option value="{{ $item->id }}">{{ $item->class_name }}</option>
+                                <option selected>Student Section</option>
+                                @foreach ($section as $item)
+                                    <option value="{{ $item->id }}">{{ $item->section_name }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group col-3">
-                            <label for="section_name" class="col-sm-12 col-form-label">Student Phone Number:</label>
-                            <input type="text" name="section_name" class="form-control" id="section_name"
+                            <label for="student_number" class="col-sm-12 col-form-label">Student Phone Number:</label>
+                            <input type="number" name="student_number" class="form-control" id="student_number"
+                                placeholder="Phone Number" maxlength="10" required>
+                            <label for="class_id" class="col-sm-12 col-form-label"> Student Gender:</label>
+                            <select id="class_id" name="class_id" class="form-control" aria-label="Default select example">
+                                <option selected> Gender</option>
+                                @foreach ($gender as $item)
+                                    <option value="{{ $item->id }}">{{ $item->gender_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group col-3">
+                            <label for="class_id" class="col-sm-12 col-form-label"> Student Admission ID:</label>
+                            <input type="number" name="section_name" class="form-control" id="section_name"
                                 placeholder="Section Name" required>
                             <label for="class_id" class="col-sm-12 col-form-label"> Student Age:</label>
                             <input type="number" name="section_name" class="form-control" id="section_name"
@@ -83,21 +87,15 @@
                                     placeholder="Section Name" required>
                                 <label for="class_id" class="col-sm-12 col-form-label"> Student Blood Group:</label>
                                 <select id="class_id" name="class_id" class="form-control" aria-label="Default select example">
-                                    <option selected>Student class</option>
-                                    @foreach ($class as $item)
-                                        <option value="{{ $item->id }}">{{ $item->class_name }}</option>
+                                    <option selected>Blood Group</option>
+                                    @foreach ($blood as $item)
+                                        <option value="{{ $item->id }}">{{ $item->blood_grp }}</option>
                                     @endforeach
                                 </select>
                                 <label for="section_name" class="col-sm-12 col-form-label">Student Nationlity:</label>
                                 <input type="text" name="section_name" class="form-control" id="section_name"
                                     placeholder="Section Name" required>
-                                <label for="section_name" class="col-sm-12 col-form-label">Student Section:</label>
-                                <select id="class_id" name="class_id" class="form-control" aria-label="Default select example">
-                                    <option selected>Student class</option>
-                                    @foreach ($class as $item)
-                                        <option value="{{ $item->id }}">{{ $item->class_name }}</option>
-                                    @endforeach
-                                </select>
+                              
                             </div>
                         </div>
                         <div class="col-6">
@@ -105,7 +103,6 @@
                                 <label for="section_name" class="col-sm-12 col-form-label">Student Address:</label>
                                 <input type="text" name="section_name" class="form-control" id="section_name"
                                     placeholder="Section Name" required>
-                               
                             </div>
                             <div class="form-group "><label for="Image" class="form-label"> Student Image  </label>
                                     <br>
@@ -188,7 +185,6 @@
         </div>
         <!-- /.row -->
     </div>
-
     <!-- /.container-fluid -->
     <!-- /.card-body -->
     @include('Backend.Section.updateSection')
