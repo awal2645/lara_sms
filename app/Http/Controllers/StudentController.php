@@ -2,27 +2,85 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Blood;
-use App\Models\Gender;
+use App\Repositories\BloodRepository;
 use App\Repositories\ClassRepository;
+use App\Repositories\GenderRepository;
 use App\Repositories\SectionRepository;
 use Illuminate\Http\Request;
 use App\Repositories\StudentRepository;
 class StudentController extends Controller
 {
-    protected $student,$class,$section;
-    public function __construct(StudentRepository $StudentRepository,ClassRepository $ClassRepository,SectionRepository $SectionRepository)
+    protected $student,$class,$section,$blood,$gender;
+    public function __construct
+    (
+        StudentRepository $studentRepository,ClassRepository $classRepository,
+        SectionRepository $sectionRepository,BloodRepository $bloodRepository,
+        GenderRepository $genderRepository,
+    )
     {
-        $this->student=$StudentRepository;
-        $this->class=$ClassRepository;
-        $this->section=$SectionRepository;
+        $this->student=$studentRepository;
+        $this->class=$classRepository;
+        $this->section=$sectionRepository;
+        $this->blood=$bloodRepository;
+        $this->gender=$genderRepository;
     }
     public function studentViewPage(){
         $class=$this->class->all();
         $student=$this->student->all();
         $section=$this->section->all();
-        $blood=Blood::all();
-        $gender=Gender::all();
-        return view('Backend.Student.student',['class'=>$class,'student'=>$student,'blood'=>$blood,'gender'=>$gender,'section'=>$section]);
+        $blood=$this->blood->all();
+        $gender=$this->gender->all();
+        return view('Backend.Student.student',
+        [
+            'class'=>$class,'student'=>$student,'blood'=>$blood,'gender'=>$gender,'section'=>$section
+        ]);
+    }
+    public function addStudent(Request $request){
+        $request->validate(
+            [
+                'stu_name'=>'required',
+                'stu_email'=>'required|unique:students',
+                'stu_phone'=>'required|unique:students',
+                'stu_adm_roll'=>'required|unique:students',
+                'stu_class_id'=>'required|not_in:0',
+                'stu_section'=>'required|not_in:0',
+            ],
+            [
+                'stu_name.required'=>'Name is required',
+                'stu_email.required'=>'E-mail already exists',
+                'stu_phone.required'=>'Number already exists',
+                'stu_adm_roll.required'=>'Roll already exists',
+                'stu_class_id.required'=>'Class Name is required',
+                'stu_section.required'=>'Section Name is required',
+            ]
+        );
+        $add_student= $this->student->store();
+        $add_student->stu_name=$request->stu_name;
+        $add_student->stu_email=$request->stu_email;
+        $add_student->stu_phone=$request->stu_phone;
+        $add_student->stu_adm_roll=$request->stu_adm_roll;
+        $add_student->stu_class_id=$request->stu_class_id;
+        $add_student->stu_birth=$request->stu_birth;
+        $add_student->stu_age=$request->stu_age;
+        $add_student->stu_gender=$request->stu_gender;
+        $add_student->stu_blood=$request->stu_blood;
+        $add_student->stu_nationality=$request->stu_nationality;
+        $add_student->stu_address=$request->stu_address;
+        $add_student->stu_section=$request->stu_section;
+        $add_student->stu_admitted_year=$request->stu_admitted_year;
+        if($request->hasFile('stu_img')){
+            $image_tmp = $request->file('stu_img');
+            if ($image_tmp->isValid()) {
+                $image_name = $image_tmp->getClientOriginalName(); //get the image name
+                $extension = $image_tmp->getClientOriginalExtension(); //get extention of the image
+                $imageName = $image_name . '-' . rand(111, 99999) . '.' . $extension;
+                $add_student->stu_img = 'assets/images/profile' . $imageName;
+             };
+        }
+        $add_student->save();
+        return response()->json([
+            'status'=>'success',
+        ]);
+
     }
 }

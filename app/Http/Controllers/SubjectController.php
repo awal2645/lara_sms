@@ -35,11 +35,11 @@ class SubjectController extends Controller
                 'sub_name.unique'=>'This name already exists '
             ]
         );
-        $db_add_subject= $this->subject->store();
-        $db_add_subject->sub_name=$request->sub_name;
-        $db_add_subject->sub_short_name=$request->sub_short_name;
-        $db_add_subject->class_id=$request->class_id;
-        $db_add_subject->save();
+        $add_subject= $this->subject->store();
+        $add_subject->sub_name=$request->sub_name;
+        $add_subject->sub_short_name=$request->sub_short_name;
+        $add_subject->class_id=$request->class_id;
+        $add_subject->save();
         return response()->json([
             'status'=>'success',
         ]);

@@ -27,7 +27,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{ route('add.section') }}" method="POST" id="sectionForm">
+                <form action="{{ route('add.student') }}" method="POST" id="studentForm" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                         <div class="row">
@@ -35,11 +35,11 @@
 
                         </div>
                         <div class="form-group col-3">
-                            <label for="student_name" class="col-sm-12 col-form-label">Student Name:</label>
-                            <input type="text" name="student_name" class="form-control" id="student_name"
+                            <label for="stu_name" class="col-sm-12 col-form-label">Student Name:</label>
+                            <input type="text" name="stu_name" class="form-control" id="stu_name"
                                 placeholder="Student Name" required>
-                            <label for="class_id" class="col-sm-12 col-form-label">Select Class:</label>
-                            <select id="class_id" name="class_id" class="form-control" aria-label="Default select example">
+                            <label for="stu_class_id" class="col-sm-12 col-form-label">Select Class:</label>
+                            <select id="stu_class_id" name="stu_class_id" class="form-control" aria-label="Default select example" required>
                                 <option selected>Select class</option>
                                 @foreach ($class as $item)
                                     <option value="{{ $item->id }}">{{ $item->class_name }}</option>
@@ -47,23 +47,23 @@
                             </select>
                         </div>
                         <div class="form-group col-3">
-                            <label for="student_email" class="col-sm-12 col-form-label"> Student student_email:</label>
-                            <input type="email" name="student_email" class="form-control" id="student_email"
-                            placeholder="Section Name" required>
-                            <label for="section_name" class="col-sm-12 col-form-label">Student Section:</label>
-                            <select id="class_id" name="class_id" class="form-control" aria-label="Default select example">
+                            <label for="stu_email" class="col-sm-12 col-form-label"> Student Student Email:</label>
+                            <input type="email" name="stu_email" class="form-control" id="stu_email"
+                            placeholder=" Enter Email" required>
+                            <label for="stu_section" class="col-sm-12 col-form-label">Student Section:</label>
+                            <select id="stu_section" name="stu_section" class="form-control" aria-label="Default select example" required>
                                 <option selected>Student Section</option>
                                 @foreach ($section as $item)
-                                    <option value="{{ $item->id }}">{{ $item->section_name }}</option>
+                                    <option value="{{$item->id }}" >{{ $item->section_name }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group col-3">
-                            <label for="student_number" class="col-sm-12 col-form-label">Student Phone Number:</label>
-                            <input type="number" name="student_number" class="form-control" id="student_number"
-                                placeholder="Phone Number" maxlength="10" required>
-                            <label for="class_id" class="col-sm-12 col-form-label"> Student Gender:</label>
-                            <select id="class_id" name="class_id" class="form-control" aria-label="Default select example">
+                            <label for="stu_phone" class="col-sm-12 col-form-label">Student Phone Number:</label>
+                            <input type="number" name="stu_phone" class="form-control" id="stu_phone"
+                                placeholder="Enter Phone Number" maxlength="10" required>
+                            <label for="stu_gender" class="col-sm-12 col-form-label"> Student Gender:</label>
+                            <select id="stu_gender" name="stu_gender" class="form-control" aria-label="Default select example" required>
                                 <option selected> Gender</option>
                                 @foreach ($gender as $item)
                                     <option value="{{ $item->id }}">{{ $item->gender_name }}</option>
@@ -71,52 +71,55 @@
                             </select>
                         </div>
                         <div class="form-group col-3">
-                            <label for="class_id" class="col-sm-12 col-form-label"> Student Admission ID:</label>
-                            <input type="number" name="section_name" class="form-control" id="section_name"
-                                placeholder="Section Name" required>
-                            <label for="class_id" class="col-sm-12 col-form-label"> Student Age:</label>
-                            <input type="number" name="section_name" class="form-control" id="section_name"
-                                placeholder="Section Name" required>
+                            <label for="stu_adm_roll" class="col-sm-12 col-form-label"> Student Admission Roll:</label>
+                            <input type="number" name="stu_adm_roll" class="form-control" id="stu_adm_roll"
+                                placeholder="Enter Addmison Roll" required>
+                            <label for="stu_age" class="col-sm-12 col-form-label"> Student Age:</label>
+                            <input type="number" name="stu_age" class="form-control" id="stu_age"
+                                placeholder="Enter Age" required>
                         </div>
                       </div> 
                       <div class="row">
                         <div class="col-6">
                             <div class="form-group ">
-                                <label for="section_name" class="col-sm-12 col-form-label">Student Date Of Birth:</label>
-                                <input type="date" name="section_name" class="form-control" id="section_name"
-                                    placeholder="Section Name" required>
-                                <label for="class_id" class="col-sm-12 col-form-label"> Student Blood Group:</label>
-                                <select id="class_id" name="class_id" class="form-control" aria-label="Default select example">
+                                <label for="stu_birth" class="col-sm-12 col-form-label">Student Date Of Birth:</label>
+                                <input type="date" name="stu_birth" class="form-control" id="stu_birth"
+                                    placeholder="Enter Date Of Birth " required>
+                                <label for="stu_blood" class="col-sm-12 col-form-label"> Student Blood Group:</label>
+                                <select id="stu_blood" name="stu_blood" class="form-control" aria-label="Default select example" required>
                                     <option selected>Blood Group</option>
                                     @foreach ($blood as $item)
                                         <option value="{{ $item->id }}">{{ $item->blood_grp }}</option>
                                     @endforeach
                                 </select>
-                                <label for="section_name" class="col-sm-12 col-form-label">Student Nationlity:</label>
-                                <input type="text" name="section_name" class="form-control" id="section_name"
-                                    placeholder="Section Name" required>
-                              
+                                <label for="stu_nationality" class="col-sm-12 col-form-label">Student Nationlity:</label>
+                                <input type="text" name="stu_nationality" class="form-control" id="stu_nationality"
+                                    placeholder="Enter Nationality " required>
+                                <label for="stu_admitted_year" class="col-sm-12 col-form-label">Student Admit Year:</label>
+                                <input type="text" name="stu_admitted_year" class="form-control" id="stu_admitted_year"
+                                    placeholder="Enter Year " value="<?php echo date("Y");?>" required>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="section_name" class="col-sm-12 col-form-label">Student Address:</label>
-                                <input type="text" name="section_name" class="form-control" id="section_name"
-                                    placeholder="Section Name" required>
+                                <label for="stu_address" class="col-sm-12 col-form-label">Student Address:</label>
+                                <input type="text" name="stu_address" class="form-control" id="stu_address"
+                                    placeholder="Enter Address" required>
                             </div>
-                            <div class="form-group "><label for="Image" class="form-label"> Student Image  </label>
-                                    <br>
-                                    <input class=" form-contro btn btn-secondary" type="file" id="formFile" onchange="preview()">
-                                    <img id="frame" src="" class="img-fluid mt-3"/>  
-                                    <br>
-                                    <button onclick="clearImage()" class="btn btn-danger mt-3">Reset</button>
+                            <div class="form-group ">
+                                <label for="stu_img" class="form-label"> Student Image  </label>
+                                <br>
+                                <input class=" form-contro btn btn-secondary formFile" name="stu_img" type="file" id="stu_img" onchange="preview()">
+                                <img id="frame" src="" class="img-fluid mt-3"/>  
+                                <br>
+                                {{-- <button onclick="clearImage()" class="btn btn-danger mt-3">Reset</button> --}}
                             </div>
                         </div>
                       </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary add_section">Save </button>
+                        <button type="button" class="btn btn-primary add_student">Save</button>
                     </div>
             </div>
         </div>
@@ -198,13 +201,13 @@
                 toastr.success("{{ 'Data added Successfully' }}")
         @endif
     </script> --}}
-    <script>
+    {{-- <script>
         function preview() {
             frame.src = URL.createObjectURL(event.target.files[0]);
         }
         function clearImage() {
-            document.getElementById('formFile').value = null;
+            document.getElementById('stu_img').value = null;
             frame.src = "";
         }
-    </script>
+    </script> --}}
 @endsection

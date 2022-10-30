@@ -32,3 +32,5 @@
 <script src="{{asset('js/subject.js')}}"></script>
 <script src="{{asset('js/class.js')}}"></script>  
 <script src="{{asset('js/section.js')}}"></script>
+<script src="{{asset('js/student.js')}}"></script>
+
