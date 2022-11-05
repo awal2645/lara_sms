@@ -109,8 +109,7 @@
                             <div class="form-group ">
                                 <label for="stu_img" class="form-label"> Student Image  </label>
                                 <br>
-                                <input class=" form-contro btn btn-secondary formFile" name="stu_img" type="file" id="stu_img" onchange="preview()">
-                                <img id="frame" src="" class="img-fluid mt-3"/>  
+                                <input class=" form-contro btn btn-secondary" name="stu_img" type="file" id="stu_img"> 
                                 <br>
                                 {{-- <button onclick="clearImage()" class="btn btn-danger mt-3">Reset</button> --}}
                             </div>
@@ -119,7 +118,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary add_student">Save</button>
+                        <button type="submit" class="btn btn-primary ">Save</button>
                     </div>
             </div>
         </div>
@@ -149,7 +148,7 @@
                                 @foreach ($student as $key => $item)
                                     <tr class="text-center">
                                         <td>{{ $key + 1 }}</td>
-                                        <td>{{ $item->section_name }}</td>
+                                        <td>{{ $item->stu_name }}</td>
                                         @if (empty($item->my_class->class_name))
                                         <td>{{ $item->class_id}}</td> 
                                         @else

@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('stu_nationality');
             $table->string('stu_address')->nullable();
             $table->string('stu_section');
-            $table->string('stu_img');
+            $table->string('stu_img')->nullable();
             $table->string('stu_admitted_year')->nullable();
             $table->softDeletes();
             $table->timestamps();

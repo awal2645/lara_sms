@@ -4,53 +4,26 @@ $(document).ready(function () {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
 });
-$('#stu_img').change(function(){    
-    let reader = new FileReader();
-    reader.onload = (e) => { 
-        $('#frame').attr('src', e.target.result); 
-    }   
-    reader.readAsDataURL(this.files[0]); 
-});
-$('.add_student').click(function(e) {
+// $('#stu_img').change(function(){    
+//     let reader = new FileReader();
+//     reader.onload = (e) => { 
+//         $('#frame').attr('src', e.target.result); 
+//     }   
+//     reader.readAsDataURL(this.files[0]); 
+// });
+$('#studentForm').submit(function(e) {
     e.preventDefault();
-    let stu_name = $('#stu_name').val();
-    let stu_class_id = $('#stu_class_id').val();
-    let stu_email = $('#stu_email').val();
-    let stu_phone = $('#stu_phone').val();
-    let stu_gender = $('#stu_gender').val();
-    let stu_age = $('#stu_age').val();
-    let stu_birth = $('#stu_birth').val();
-    let stu_blood = $('#stu_blood').val();
-    let stu_adm_roll = $('#stu_adm_roll').val();
-    let stu_section = $('#stu_section').val();
-    let stu_nationality = $('#stu_nationality').val();
-    let stu_address = $('#stu_address').val();
-    let stu_admitted_year = $('#stu_admitted_year').val();
-    let stu_img = $('#stu_img').val();
+    let fromData = new FormData(this);
+    console.log(fromData);
     let url = $('#studentForm').attr('action');
-    console.log(stu_name);
     $.ajax({
-        url:url,
-        method:'POST',
-        data: 
-        {
-            stu_name:stu_name,
-            stu_class_id:stu_class_id,
-            stu_email:stu_email,
-            stu_phone:stu_phone,
-            stu_gender:stu_gender,
-            stu_age:stu_age,
-            stu_birth:stu_birth,
-            stu_blood:stu_blood,
-            stu_adm_roll:stu_adm_roll,
-            stu_section:stu_section,
-            stu_nationality:stu_nationality,
-            stu_address:stu_address,
-            stu_admitted_year:stu_admitted_year,
-            stu_img:stu_img,
-        },
+        url: url,
+        method: 'POST',
+        data: fromData,
+        cache: false,
         contentType: false,
         processData: false,
+        dataType: 'json',
     success:function(res){
         if(res.status=='success'){
             $('#exampleModal').modal('hide');

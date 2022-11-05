@@ -36,24 +36,24 @@ class StudentController extends Controller
         ]);
     }
     public function addStudent(Request $request){
-        $request->validate(
-            [
-                'stu_name'=>'required',
-                'stu_email'=>'required|unique:students',
-                'stu_phone'=>'required|unique:students',
-                'stu_adm_roll'=>'required|unique:students',
-                'stu_class_id'=>'required|not_in:0',
-                'stu_section'=>'required|not_in:0',
-            ],
-            [
-                'stu_name.required'=>'Name is required',
-                'stu_email.required'=>'E-mail already exists',
-                'stu_phone.required'=>'Number already exists',
-                'stu_adm_roll.required'=>'Roll already exists',
-                'stu_class_id.required'=>'Class Name is required',
-                'stu_section.required'=>'Section Name is required',
-            ]
-        );
+        // $request->validate(
+        //     [
+        //         'stu_name'=>'required',
+        //         'stu_email'=>'required|unique:students',
+        //         'stu_phone'=>'required|unique:students',
+        //         'stu_adm_roll'=>'required|unique:students',
+        //         'stu_class_id'=>'required|not_in:0',
+        //         'stu_section'=>'required|not_in:0',
+        //     ],
+        //     [
+        //         'stu_name.required'=>'Name is required',
+        //         'stu_email.required'=>'E-mail already exists',
+        //         'stu_phone.required'=>'Number already exists',
+        //         'stu_adm_roll.required'=>'Roll already exists',
+        //         'stu_class_id.required'=>'Class Name is required',
+        //         'stu_section.required'=>'Section Name is required',
+        //     ]
+        // );
         $add_student= $this->student->store();
         $add_student->stu_name=$request->stu_name;
         $add_student->stu_email=$request->stu_email;
@@ -68,14 +68,13 @@ class StudentController extends Controller
         $add_student->stu_address=$request->stu_address;
         $add_student->stu_section=$request->stu_section;
         $add_student->stu_admitted_year=$request->stu_admitted_year;
-        if($request->hasFile('stu_img')){
-            $image_tmp = $request->file('stu_img');
-            if ($image_tmp->isValid()) {
-                $image_name = $image_tmp->getClientOriginalName(); //get the image name
-                $extension = $image_tmp->getClientOriginalExtension(); //get extention of the image
-                $imageName = $image_name . '-' . rand(111, 99999) . '.' . $extension;
-                $add_student->stu_img = 'assets/images/profile' . $imageName;
-             };
+        if($request->hasfile('stu_img')){ 
+            $file=$request->file('stu_img');
+            $file_ext=$file->getClientOriginalExtension();
+            $file_name='stu_img.'.time().$file_ext;
+            $file->move('images/profile' ,$file_name);
+            $add_student->stu_img='images/profile'.$file_name ;
+
         }
         $add_student->save();
         return response()->json([
