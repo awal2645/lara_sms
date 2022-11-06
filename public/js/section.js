@@ -24,7 +24,7 @@ $('.add_section').click(function (e) {
             $('#form').trigger("reset");
             // $('table').load(location.href+'.table');
             swal({
-                title: "Good job!",
+                title: "Record Inserted Successfuly!",
                 icon: "success",
                 button: "Aww yiss!",
               });
@@ -70,7 +70,7 @@ $.ajax({
             $('#updateform')[0].reset();
             $('table').load(location.href+' .table');
             swal({
-                title: "Good job!",
+                title: "Update successfuly!",
                 icon: "success",
                 button: "Aww yiss!",
               });
@@ -109,7 +109,7 @@ $('.delete_section_id').click(function (e) {
                 success:function(res){
                     if(res.status=='success'){
                         swal({
-                            title: "Good job!",
+                            title: "Delete successfuly!",
                             icon: "success",
                             button: "Aww yiss!",
                           });

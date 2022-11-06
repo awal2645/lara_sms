@@ -25,7 +25,7 @@ $(document).ready(function () {
                 $('#form').trigger("reset");
                 $('table').load(location.href+'.table');
                 swal({
-                    title: "Good job!",
+                    title: "Record Inserted Successfuly!",
                     text: "You clicked the button!",
                     icon: "success",
                     button: "Aww yiss!",
@@ -76,7 +76,7 @@ $('.update_subject').click(function (e) {
                 $('#updateform')[0].reset();
                 $('table').load(location.href+' .table');
                 swal({
-                    title: "Good job!",
+                    title: "Update successfuly!",
                     text: "You clicked the button!",
                     icon: "success",
                     button: "Aww yiss!",
@@ -117,7 +117,7 @@ $('.update_subject').click(function (e) {
                         if(res.status=='success'){
                             $('table').load(location.href+'.table');
                             swal({
-                                title: "Good job!",
+                                title: "Delete successfuly!",
                                 icon: "success",
                                 button: "Aww yiss!",
                               });

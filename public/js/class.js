@@ -22,7 +22,7 @@ $(document).ready(function () {
                     $('#exampleModal').modal('hide');
                     $('#form')[0].reset();
                     swal({
-                        title: "Good job!",
+                        title: "Record Inserted Successfuly!",
                         icon: "success",
                         button: "Aww yiss!",
                       });
@@ -68,7 +68,7 @@ $(document).ready(function () {
                     $('#updateform')[0].reset();
                     $('table').load(location.href+' .table');
                     swal({
-                        title: "Good job!",
+                        title: "Update successfuly!",
                         icon: "success",
                         button: "Aww yiss!",
                       });
@@ -108,7 +108,7 @@ $(document).ready(function () {
                      if(res.status=='success'){
                          $('table').load(location.href+' .table');
                          swal({
-                            title: "Good job!",
+                            title: "Delete successfuly!",
                             text: "You clicked the button!",
                             icon: "success",
                             button: "Aww yiss!",

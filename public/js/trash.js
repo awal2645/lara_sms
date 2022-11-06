@@ -29,7 +29,7 @@ $('.trash_class_name').click(function (e) {
                  if(res.status=='success'){
                      $('table').load(location.href+' .table');
                      swal({
-                        title: "Good job!",
+                        title: "Delete successfuly!",
                         text: "You clicked the button!",
                         icon: "success",
                         button: "Aww yiss!",

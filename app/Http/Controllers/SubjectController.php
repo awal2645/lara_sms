@@ -46,7 +46,7 @@ class SubjectController extends Controller
      }
     //  update  sucject function
      public function updateSubject(Request $request){
-        $this->datsubjecta->update()->where('id',$request->up_sub_id)->update(
+        $this->subject->update()->where('id',$request->up_sub_id)->update(
                 [
                     'sub_name'=>$request->up_sub_name,
                     'sub_short_name'=>$request->up_sub_short_name,

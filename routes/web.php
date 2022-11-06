@@ -29,6 +29,8 @@ Route::post('section/update', [SectionController::class,'updateSection'])->name(
 Route::post('section/delete', [SectionController::class,'deleteSection'])->name('delete.section');
 Route::get('student', [StudentController::class,'studentViewPage'])->name('student.view.page');
 Route::post('student/add', [StudentController::class,'addStudent'])->name('add.student');
+Route::post('student/update', [StudentController::class,'upateStudent'])->name('update.student');
+Route::post('student/delete', [StudentController::class,'deleteStudent'])->name('delete.student');
 
 // admin route end
 require __DIR__.'/auth.php';
