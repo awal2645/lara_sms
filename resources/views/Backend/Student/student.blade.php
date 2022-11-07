@@ -68,8 +68,8 @@
                             <label for="stu_phone" class="col-sm-12 col-form-label">Student Phone Number:</label>
                             <input type="number" name="stu_phone" class="form-control" id="stu_phone"
                                 placeholder="Enter Phone Number" maxlength="10" required>
-                            <label for="stu_gender_id" class="col-sm-12 col-form-label"> Student Gender:</label>
-                            <select id="stu_gender_id" name="stu_gender_id" class="form-control" aria-label="Default select example" required>
+                            <label for="stu_gender" class="col-sm-12 col-form-label"> Student Gender:</label>
+                            <select id="stu_gender" name="stu_gender" class="form-control" aria-label="Default select example" required>
                                 <option selected> Gender</option>
                                 @foreach ($gender as $item)
                                     <option value="{{ $item->id }}">{{ $item->gender_name }}</option>
@@ -89,8 +89,8 @@
                         <div class="col-6">
                             <div class="form-group ">
                                 
-                                <label for="stu_blood_id" class="col-sm-12 col-form-label"> Student Blood Group:</label>
-                                <select id="stu_blood_id" name="stu_blood_id" class="form-control" aria-label="Default select example" required>
+                                <label for="stu_blood" class="col-sm-12 col-form-label"> Student Blood Group:</label>
+                                <select id="stu_blood" name="stu_blood" class="form-control" aria-label="Default select example" required>
                                     <option selected>Blood Group</option>
                                     @foreach ($blood as $item)
                                         <option value="{{ $item->id }}">{{ $item->blood_grp }}</option>
@@ -102,6 +102,8 @@
                                 <label for="stu_admitted_year" class="col-sm-12 col-form-label">Student Admit Year:</label>
                                 <input type="text" name="stu_admitted_year" class="form-control" id="stu_admitted_year"
                                     placeholder="Enter Year " value="<?php echo date("Y");?>" required>
+                                <label for="stu_pay_date" class="col-sm-12 col-form-label">Due Fees  Payment Date :</label>
+                                <input type="date" name="stu_pay_date" class="form-control" id="stu_pay_date" value="" required>
                             </div>
                         </div>
                         <div class="col-6">

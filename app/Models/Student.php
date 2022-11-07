@@ -12,7 +12,7 @@ class Student extends Model
 
     protected $fillable = 
     [
-        'stu_name', 'stu_email','stu_adm_roll','stu_class_id','stu_age','stu_gender_id','stu_blood_id','stu_parents','stu_address','stu_section','stu_img','stu_admitted_year',
+        'stu_name', 'stu_email','stu_adm_roll','stu_class_id','stu_age','stu_gender','stu_blood','stu_parents','stu_address','stu_section','stu_img','stu_admitted_year',
     ];
     public function my_class()
     {

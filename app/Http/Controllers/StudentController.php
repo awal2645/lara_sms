@@ -61,12 +61,13 @@ class StudentController extends Controller
         $add_student->stu_adm_roll=$request->stu_adm_roll;
         $add_student->stu_class_id=$request->stu_class_id;
         $add_student->stu_age=$request->stu_age;
-        $add_student->stu_gender_id=$request->stu_gender_id;
-        $add_student->stu_blood_id=$request->stu_blood_id;
+        $add_student->stu_gender=$request->stu_gender;
+        $add_student->stu_blood=$request->stu_blood;
         $add_student->stu_parents=$request->stu_parents;
         $add_student->stu_address=$request->stu_address;
         $add_student->stu_section=$request->stu_section;
         $add_student->stu_admitted_year=$request->stu_admitted_year;
+        $add_student->stu_pay_date=$request->stu_pay_date;
         if($request->hasfile('stu_img')){ 
             $file=$request->file('stu_img');
             $file_ext=$file->getClientOriginalExtension();

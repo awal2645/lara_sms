@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('classes', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('class_name');
             $table->integer('class_fees');
             $table->softDeletes();

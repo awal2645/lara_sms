@@ -17,8 +17,5 @@ class Classe extends Model
         'class_name', 'class_fees',
     ];
     // one to one relation section model
-    public function my_section()
-    {
-        return $this->belongsTo('App\Models\Section');
-    }
+  
 }

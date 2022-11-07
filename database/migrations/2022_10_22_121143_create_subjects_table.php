@@ -14,10 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('subjects', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('sub_name');
             $table->string('sub_short_name');
-            $table->unsignedBigInteger('class_id');
+            $table->integer('class_id')->unsigned();
             $table->foreign('class_id')->references('id')->on('classes')->onDelete('cascade');
             $table->timestamps();
         });

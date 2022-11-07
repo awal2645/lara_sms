@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PdfController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\StudentController;
@@ -31,6 +32,10 @@ Route::get('student', [StudentController::class,'studentViewPage'])->name('stude
 Route::post('student/add', [StudentController::class,'addStudent'])->name('add.student');
 Route::post('student/update', [StudentController::class,'upateStudent'])->name('update.student');
 Route::post('student/delete', [StudentController::class,'deleteStudent'])->name('delete.student');
+
+// PDF
+Route::get('pdf',[PdfController::class,'generate_pdf']);
+Route::get('/download-pdf',[PdfController::class,'download_pdf']);
 
 // admin route end
 require __DIR__.'/auth.php';
