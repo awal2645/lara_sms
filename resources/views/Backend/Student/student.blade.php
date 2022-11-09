@@ -42,12 +42,14 @@
                                 <span class="text-danger">{{$message}}</span>
                                 @enderror
                             <label for="stu_class_id" class="col-sm-12 col-form-label">Select Class:</label>
-                            <select id="stu_class_id" name="stu_class_id" class="form-control" aria-label="Default select example" required>
+                            <select id="stu_class_id"  data-url="{{route('search.fees')}}"  name="stu_class_id" class="form-control" aria-label="Default select example" required>
                                 <option selected>Select class</option>
                                 @foreach ($class as $item)
                                     <option value="{{ $item->id }}">{{ $item->class_name }}</option>
                                 @endforeach
                             </select>
+                            <label for="d_ammount" class="col-sm-12 col-form-label">Total Fees:</label>
+                            <input type="number" class="form-control" name="d_ammount"  id="d_ammount" readonly>
                         </div>
                         <div class="form-group col-3">
                             <label for="stu_email" class="col-sm-12 col-form-label"> Student Email:</label>
@@ -63,11 +65,6 @@
                                     <option value="{{$item->id }}" >{{ $item->section_name }}</option>
                                 @endforeach
                             </select>
-                        </div>
-                        <div class="form-group col-3">
-                            <label for="stu_phone" class="col-sm-12 col-form-label">Student Phone Number:</label>
-                            <input type="number" name="stu_phone" class="form-control" id="stu_phone"
-                                placeholder="Enter Phone Number" maxlength="10" required>
                             <label for="stu_gender" class="col-sm-12 col-form-label"> Student Gender:</label>
                             <select id="stu_gender" name="stu_gender" class="form-control" aria-label="Default select example" required>
                                 <option selected> Gender</option>
@@ -77,25 +74,33 @@
                             </select>
                         </div>
                         <div class="form-group col-3">
-                            <label for="stu_adm_roll" class="col-sm-12 col-form-label"> Student Admission Roll:</label>
+                            <label for="stu_phone" class="col-sm-12 col-form-label">Student Phone Number:</label>
+                            <input type="number" name="stu_phone" class="form-control" id="stu_phone"
+                                placeholder="Enter Phone Number" maxlength="10" required>
+                            <label for="class_fees" class="col-sm-12 col-form-label">Class Fees:</label>
+                            <input type="number" name="class_fees" class="form-control" id="class_fees" value="" readonly>
+                            <label for="stu_blood" class="col-sm-12 col-form-label"> Student Blood Group:</label>
+                            <select id="stu_blood" name="stu_blood" class="form-control" aria-label="Default select example" required>
+                                <option selected>Blood Group</option>
+                                @foreach ($blood as $item)
+                                    <option value="{{ $item->id }}">{{ $item->blood_grp }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group col-3">
+                            <label for="stu_adm_roll" class="col-sm-12 col-form-label"> Student Admission Roll<span class="text-danger">*</span></label>
                             <input type="number" name="stu_adm_roll" class="form-control" id="stu_adm_roll"
                                 placeholder="Enter Addmison Roll" required>
+                            <label for="discount" class="col-sm-12 col-form-label">Disscount Ammount :</label>
+                            <input type="number" name="discount" class="form-control" id="discount">
                             <label for="stu_age" class="col-sm-12 col-form-label"> Student Age:</label>
-                            <input type="number" name="stu_age" class="form-control" id="stu_age"
-                                placeholder="Enter Age" required>
+                            <input type="number" name="stu_age"  class="form-control" id="stu_age"
+                                placeholder="Enter Age" required> 
                         </div>
                       </div> 
                       <div class="row">
                         <div class="col-6">
                             <div class="form-group ">
-                                
-                                <label for="stu_blood" class="col-sm-12 col-form-label"> Student Blood Group:</label>
-                                <select id="stu_blood" name="stu_blood" class="form-control" aria-label="Default select example" required>
-                                    <option selected>Blood Group</option>
-                                    @foreach ($blood as $item)
-                                        <option value="{{ $item->id }}">{{ $item->blood_grp }}</option>
-                                    @endforeach
-                                </select>
                                 <label for="stu_parents" class="col-sm-12 col-form-label">Student Parents Name:</label>
                                 <input type="text" name="stu_parents" class="form-control" id="stu_parents"
                                     placeholder="Enter Parents " required>
@@ -111,6 +116,7 @@
                                 <label for="stu_address" class="col-sm-12 col-form-label">Student Address:</label>
                                 <input type="text" name="stu_address" class="form-control" id="stu_address"
                                     placeholder="Enter Address" required>
+                                    
                             </div>
                             <div class="form-group ">
                                 <label for="stu_img" class="form-label"> Student Image  </label>

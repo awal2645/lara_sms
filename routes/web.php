@@ -34,7 +34,7 @@ Route::post('student/add', [StudentController::class,'addStudent'])->name('add.s
 Route::post('student/update', [StudentController::class,'upateStudent'])->name('update.student');
 Route::post('student/delete', [StudentController::class,'deleteStudent'])->name('delete.student');
 Route::get('payment',[PaymentController::class,'paymentViewPage'])->name('payment.view.page');
-Route::post('search',[PaymentController::class,'paymentViewPage'])->name('search.view.page');
+Route::post('search',[PaymentController::class,'searchFeesByClass'])->name('search.fees');
 // PDF
 Route::get('pdf',[PdfController::class,'generate_pdf']);
 Route::get('/download-pdf',[PdfController::class,'download_pdf']);

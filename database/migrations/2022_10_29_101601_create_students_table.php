@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('stu_email')->unique();
             $table->string('stu_phone');
             $table->string('stu_adm_roll')->unique();
-            $table->integer('stu_class_id')->unsigned();
+            $table->unsignedBigInteger('stu_class_id');
             $table->foreign('stu_class_id')->references('id')->on('classes')->onDelete('cascade');
             $table->tinyInteger('stu_age')->nullable();
             $table->string('stu_gender');
