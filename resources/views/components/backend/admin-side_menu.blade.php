@@ -70,7 +70,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{route('trash.class')}}" class="nav-link">
+            <a href="{{route('trash.class')}}" class="nav-link {{ (request()->is('trash')) ? 'active' : '' }}">
               <i class="nav-icon fas fa-edit"></i>
               <p>
                 Trash
@@ -78,7 +78,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{route('student.view.page')}}" class="nav-link">
+            <a href="{{route('student.view.page')}}" class="nav-link {{ (request()->is('student')) ? 'active' : '' }}">
               <i class=" nav-icon fa-solid fa-user"></i>
               <p>
                 Student
@@ -89,15 +89,23 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
               <p>
-                Tables
+                Payment
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/tables/jsgrid.html" class="nav-link">
+                <a href="{{route('payment.view.page')}}" class="nav-link {{ (request()->is('payment')) ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>jsGrid</p>
+                  <p>Payment List </p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Payment Reports </p>
                 </a>
               </li>
             </ul>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\SettingController;
@@ -32,7 +33,8 @@ Route::get('student', [StudentController::class,'studentViewPage'])->name('stude
 Route::post('student/add', [StudentController::class,'addStudent'])->name('add.student');
 Route::post('student/update', [StudentController::class,'upateStudent'])->name('update.student');
 Route::post('student/delete', [StudentController::class,'deleteStudent'])->name('delete.student');
-
+Route::get('payment',[PaymentController::class,'paymentViewPage'])->name('payment.view.page');
+Route::post('search',[PaymentController::class,'paymentViewPage'])->name('search.view.page');
 // PDF
 Route::get('pdf',[PdfController::class,'generate_pdf']);
 Route::get('/download-pdf',[PdfController::class,'download_pdf']);

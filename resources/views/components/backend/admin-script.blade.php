@@ -33,4 +33,6 @@
 <script src="{{asset('js/class.js')}}"></script>  
 <script src="{{asset('js/section.js')}}"></script>
 <script src="{{asset('js/student.js')}}"></script>
+<script src="{{asset('plugins/select2/js/select2.full.min.js')}}"></script>
+
 
