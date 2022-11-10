@@ -5,8 +5,8 @@
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
-          <label>Select Class</label>
-          <select id="class" name="class_id"   class="form-control select2bs4" style="width: 100%;">
+          <label for="class_id">Select Class</label>
+          <select id="class_id" name="class_id" data-url="{{route('search.student')}}"   class="form-control select2bs4" style="width: 100%;">
             <option selected="selected" >Select Class</option>
             <option value="1">Class 11</option>
             
@@ -31,13 +31,10 @@
       <!-- /.col -->
       <div class="col-md-6">
       
-        <div class="form-group">
+        <div class="form-group " >
           <label>Search Student</label>
-          <select id="#student"   class="form-control select2bs4"  style="width: 100%;">
-            <option selected="selected">Select Student</option>
-            <option>Cash</option>
-            <option>Online</option>
-            
+          <select id="student_slect" name="student_slect"   class="form-control select2bs4"  style="width: 100%;">
+            <option value="">Select Student</option>
           </select>
         </div>
         <!-- /.form-group -->
@@ -69,25 +66,7 @@
     
     </form> --}}
 
-   <script>
-     $(document).ready(function() {
-       
-   
-
-     
-        if($("#log").length){
-            $( "#first_reading" ).keyup(function() {
-                $.sum();          
-            }); 
-            $( "#second_reading" ).keyup(function() {
-                $.sum();          
-            }); 
-         }   
-            $.sum = function(){
-                $("#total_reading").val(parseInt($("#first_reading").val()) - parseInt($("#second_reading").val()));
-            } 
-    });
-   </script>
+  
   <script>
     
     $(function () {
@@ -229,7 +208,7 @@ let class_id=$(this).val();
 
 alert('hi');
 $.ajax({
-  url:"{{route('search.view.page')}}",
+  url:"",
   method:'POST',
   data:'class_id'=+class_id+'&_token={{csrf_token()}}',
   success:function(res){
