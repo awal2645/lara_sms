@@ -156,7 +156,7 @@ $(document).ready(function () {
         // var dec = (disc / 100).toFixed(2); //its convert 10 into 0.10
         // var mult = main * dec; // gives the value for subtract from main value
         var discont = main - disc;
-        $('#d_ammount').val(discont);
+        $('#total_ammount').val(discont);
     });
     // class wise fees value Chnage Scripts
     $('#stu_class_id').change(function () {

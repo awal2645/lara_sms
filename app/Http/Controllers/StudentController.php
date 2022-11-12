@@ -66,6 +66,9 @@ class StudentController extends Controller
         $add_student->stu_parents=$request->stu_parents;
         $add_student->stu_address=$request->stu_address;
         $add_student->stu_section=$request->stu_section;
+        $add_student->class_fees=$request->class_fees;
+        $add_student->discount_ammount=$request->discount_ammount;
+        $add_student->total_ammount=$request->total_ammount;
         $add_student->stu_admitted_year=$request->stu_admitted_year;
         $add_student->stu_pay_date=$request->stu_pay_date;
         if($request->hasfile('stu_img')){ 

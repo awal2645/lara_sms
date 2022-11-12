@@ -221,4 +221,5 @@ $.ajax({
   })
 
 </script>
+<script src="{{asset('js/payment.js')}}">
 @endsection

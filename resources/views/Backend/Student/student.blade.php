@@ -48,8 +48,8 @@
                                     <option value="{{ $item->id }}">{{ $item->class_name }}</option>
                                 @endforeach
                             </select>
-                            <label for="d_ammount" class="col-sm-12 col-form-label">Total Fees:</label>
-                            <input type="number" class="form-control" name="d_ammount"  id="d_ammount" readonly>
+                            <label for="total_ammount" class="col-sm-12 col-form-label">Total Fees:</label>
+                            <input type="number" class="form-control" name="total_ammount"  id="total_ammount" readonly>
                         </div>
                         <div class="form-group col-3">
                             <label for="stu_email" class="col-sm-12 col-form-label"> Student Email:</label>
@@ -92,7 +92,7 @@
                             <input type="number" name="stu_adm_roll" class="form-control" id="stu_adm_roll"
                                 placeholder="Enter Addmison Roll" required>
                             <label for="discount" class="col-sm-12 col-form-label">Disscount Ammount :</label>
-                            <input type="number" name="discount" class="form-control" id="discount">
+                            <input type="number" name="discount_ammount" class="form-control" id="discount">
                             <label for="stu_age" class="col-sm-12 col-form-label"> Student Age:</label>
                             <input type="number" name="stu_age"  class="form-control" id="stu_age"
                                 placeholder="Enter Age" required> 
