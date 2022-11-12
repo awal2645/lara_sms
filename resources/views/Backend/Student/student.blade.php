@@ -91,7 +91,7 @@
                             <label for="stu_adm_roll" class="col-sm-12 col-form-label"> Student Admission Roll<span class="text-danger">*</span></label>
                             <input type="number" name="stu_adm_roll" class="form-control" id="stu_adm_roll"
                                 placeholder="Enter Addmison Roll" required>
-                            <label for="discount" class="col-sm-12 col-form-label">Disscount Ammount :</label>
+                            <label for="discount" class="col-sm-12 col-form-label">Discount Ammount :</label>
                             <input type="number" name="discount_ammount" class="form-control" id="discount">
                             <label for="stu_age" class="col-sm-12 col-form-label"> Student Age:</label>
                             <input type="number" name="stu_age"  class="form-control" id="stu_age"

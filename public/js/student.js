@@ -32,7 +32,7 @@ $(document).ready(function () {
                     swal({
                         title: "Record Inserted Successfuly!",
                         icon: "success",
-                        button: "Aww yiss!",
+                        button: "OK !",
                     });
                     setTimeout(function () {
                         window.location.reload(1);
@@ -94,7 +94,7 @@ $(document).ready(function () {
                     swal({
                         title: "Update successfuly!",
                         icon: "success",
-                        button: "Aww yiss!",
+                        button: "OK !",
                     });
                     setTimeout(function () {
                         window.location.reload(1);
@@ -133,7 +133,7 @@ $(document).ready(function () {
                                 swal({
                                     title: "Delete successfuly!",
                                     icon: "success",
-                                    button: "Aww yiss!",
+                                    button: "OK !",
                                 });
                                 setTimeout(function () {
                                     window.location.reload(1);

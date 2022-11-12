@@ -14,7 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('payments', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->integer('class_id')->unsigned();
+            $table->foreign('class_id')->references('id')->on('classes')->onDelete('cascade');
+            $table->integer('student_select_id');
+            $table->string('pay_type');
+            $table->integer('pay_amount');
+            $table->integer('due_pay_date');
+            $table->integer('pay_date');
+            $table->integer('stu_due_amount');
+            $table->integer('total_amount');
             $table->timestamps();
         });
     }

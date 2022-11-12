@@ -1,8 +1,6 @@
 <?php
 namespace App\Repositories;
 
-use App\Models\Blood;
-use App\Models\Classe;
 use App\Models\Gender;
 
 class GenderRepository implements MainInterface

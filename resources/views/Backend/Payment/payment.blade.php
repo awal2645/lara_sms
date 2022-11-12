@@ -1,68 +1,78 @@
 @extends('layouts.admin-app')
 @section('content')
 <div class="card-body">
-    <form action="" id="log">
+  <form action="{{route('student.payment')}}" method="POST" id="paymentFrom">
+    @csrf
+
     <div class="row">
+      <div class="errMsgContainer">
+
+      </div>
       <div class="col-md-6">
         <div class="form-group">
           <label for="class_id">Select Class</label>
-          <select id="class_id" name="class_id" data-url="{{route('search.student')}}"   class="form-control select2bs4" style="width: 100%;">
+          <select id="class_id" name="class_id" data-url="{{route('search.student')}}"  class="form-control select2bs4" style="width: 100%;">
             <option selected="selected" >Select Class</option>
-            <option value="1">Class 11</option>
-            
+            @foreach ($class as $item)
+            <option value="{{$item->id}}">{{$item->class_name}}</option>
+            @endforeach
           </select>
         </div>
         <!-- /.form-group -->
         <div class="form-group">
-          <label>Payment Type</label>
-          <select class="form-control select2bs4"  style="width: 100%;">
+          <label for="pay_type">Payment Type</label>
+          <select class="form-control select2bs4" id="pay_type" name="pay_type" style="width: 100%;">
             <option selected="selected">Selelect payment Method</option>
-            <option>Cash</option>
-            <option>Online</option>
-            
+            <option value="1">Cash</option>
+            <option value="2">Online</option>
           </select>
         </div>
         <div class="form-group">
-            <label> Pay Ammount</label>
-            <input type="text" id="second_reading" class="form-control" placeholder="Enter Your Ammout">
+            <label for="pay_amount"> Pay Amount</label>
+            <input type="text" id="pay_amount" name="pay_amount" class="form-control" placeholder="Enter Your Ammout">
+        </div>
+        <div class="form-group">
+          <label for="due_pay_date">Due Payment Date</label>
+          <input type="date" class="form-control" name="due_pay_date" id="due_pay_date" value="" >
         </div>
         <!-- /.form-group -->
       </div>
       <!-- /.col -->
       <div class="col-md-6">
-      
         <div class="form-group " >
-          <label>Search Student</label>
-          <select id="student_slect" name="student_slect"   class="form-control select2bs4"  style="width: 100%;">
+          <label for="student_select_id">Search Student</label>
+          <select id="student_select_id" name="student_select_id" data-url="{{route('search.student.fees')}}"   class="form-control select2bs4"  style="width: 100%;">
             <option value="">Select Student</option>
           </select>
         </div>
         <!-- /.form-group -->
         <div class="form-group">
-            <label>Due Ammount:</label>
-            <input type="text" class="form-control" name="first_reading" id="first_reading" value="8000" readonly>
+            <label for="stu_due_amount">Due Amount:</label>
+            <input type="text" class="form-control" name="stu_due_amount" id="stu_due_amount" value="" readonly>
         </div>
-       
         <div class="form-group">
-            <label>Total Due Ammount</label>
-            <input type="text" class="form-control" name="total_reading" id="total_reading" value="8000" readonly>
+            <label for="total_amount">Total Due Amount</label>
+            <input type="text" class="form-control" name="total_amount" id="total_amount" value="" readonly>
         </div>
+        <div class="form-group">
+          <label for="pay_date">Payment Date</label>
+          <input type="date" class="form-control" name="pay_date" id="pay_date" value="" >
+      </div>
         <br>
         <!-- /.form-group -->
-       
       </div>
-      <button class="form-control btn btn-success">Submit</button>
+      <button type="submit" class="form-control btn btn-success">Submit</button>
       <!-- /.col -->
     </div>
-    </form>
+  </form>
     <!-- /.row -->
   </div>
   {{-- <form name="log" id="log">
 
-    <input type="text" name="first_reading" id="first_reading">
-    <input type="text" name="second_reading" id="second_reading">
+    <input type="text" name="stu_due_amount" id="stu_due_amount">
+    <input type="text" name="pay_amount" id="pay_amount">
     
-    <input type="text" name="total_reading" id="total_reading">
+    <input type="text" name="total_amount" id="total_amount">
     
     </form> --}}
 

@@ -28,7 +28,7 @@ $(document).ready(function () {
                     title: "Record Inserted Successfuly!",
                     text: "You clicked the button!",
                     icon: "success",
-                    button: "Aww yiss!",
+                    button: "OK !",
                   });
                   setTimeout(function(){
                     window.location.reload(1);
@@ -79,7 +79,7 @@ $('.update_subject').click(function (e) {
                     title: "Update successfuly!",
                     text: "You clicked the button!",
                     icon: "success",
-                    button: "Aww yiss!",
+                    button: "OK !",
                   });
                   setTimeout(function(){
                     window.location.reload(1);
@@ -119,7 +119,7 @@ $('.update_subject').click(function (e) {
                             swal({
                                 title: "Delete successfuly!",
                                 icon: "success",
-                                button: "Aww yiss!",
+                                button: "OK !",
                               });
                               setTimeout(function(){
                                 window.location.reload(1);

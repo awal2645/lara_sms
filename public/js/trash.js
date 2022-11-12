@@ -32,7 +32,7 @@ $('.trash_class_name').click(function (e) {
                         title: "Delete successfuly!",
                         text: "You clicked the button!",
                         icon: "success",
-                        button: "Aww yiss!",
+                        button: "OK !",
                       });
                       setTimeout(function(){
                         window.location.reload(1);
