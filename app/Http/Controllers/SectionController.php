@@ -28,7 +28,7 @@ class SectionController extends Controller
         $request->validate(
             [
                 'section_name' => 'required|unique:sections',
-                'class_id' => 'required'
+                'class_id' => 'required',
             ],
             [
                 'section_name.required' => 'Name is required',
@@ -63,4 +63,5 @@ class SectionController extends Controller
             'status'=>'success',
         ]);
     }
+    
 }

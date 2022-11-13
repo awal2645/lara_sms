@@ -223,8 +223,8 @@
                 },
                 toastr.success("{{ 'Data added Successfully' }}")
         @endif
-    </script> --}}
-    {{-- <script>
+    </script> 
+    <script>
         function preview() {
             frame.src = URL.createObjectURL(event.target.files[0]);
         }

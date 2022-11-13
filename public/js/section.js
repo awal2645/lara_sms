@@ -10,7 +10,6 @@ $('.add_section').click(function (e) {
     let section_name = $('#section_name').val();
     let class_id = $('#class_id').val();
     let url = $('#sectionForm').attr('action');
-    console.log(section_name);
     $.ajax({
         url:url,
         method:'POST',
