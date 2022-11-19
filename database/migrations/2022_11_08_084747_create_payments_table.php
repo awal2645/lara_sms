@@ -20,8 +20,8 @@ return new class extends Migration
             $table->integer('student_select_id');
             $table->string('pay_type');
             $table->integer('pay_amount');
-            $table->integer('due_pay_date');
-            $table->integer('pay_date');
+            $table->string('due_pay_date');
+            $table->string('pay_date');
             $table->integer('stu_due_amount');
             $table->integer('total_amount');
             $table->timestamps();

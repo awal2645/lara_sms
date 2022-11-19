@@ -8,10 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Payment extends Model
 {
     use HasFactory;
-    protected $table='payments';
+    protected $table = 'payments';
 
-    protected $fillable = 
+    protected $fillable =
     [
-        'class_id', 'student_select_id','pay_type','pay_amount','due_pay_date','pay_date','stu_due_amount','total_amount',
+        'class_id', 'student_select_id', 'pay_type', 'pay_amount', 'due_pay_date', 'pay_date', 'stu_due_amount', 'total_amount',
     ];
+    public function my_class()
+    {
+        return $this->hasOne('App\Models\Classe', 'id', 'class_id');
+    }
+    public function my_student()
+    {
+        return $this->hasOne('App\Models\Student', 'id', 'student_select_id');
+    }
 }

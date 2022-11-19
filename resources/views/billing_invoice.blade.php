@@ -1,358 +1,371 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title> {{ __('Billing Invoice - Webjourney') }} </title>
-    
+
 </head>
 
 <body>
 
 
-<style>
-    * {
-        font-family: 'Roboto', sans-serif;
-        line-height: 26px;
-        font-size: 15px;
-    }
+    <style>
+        * {
+            font-family: 'Roboto', sans-serif;
+            line-height: 26px;
+            font-size: 15px;
+        }
 
-    ul {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-    }
-    /*=========================================================
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        /*=========================================================
       [ Table ]
     =========================================================*/
 
-    .custom--table {
-        width: 100%;
-        color: inherit;
-        vertical-align: top;
-        font-weight: 400;
-        border-collapse: collapse;
-        border-bottom: 2px solid #ddd;
-        margin-top: 0;
-    }
-    .table-title{
-        font-size: 24px;
-        font-weight: 600;
-        line-height: 32px;
-        margin-bottom: 10px;
-    }
-    .custom--table thead {
-        font-weight: 700;
-        background: inherit;
-        color: inherit;
-        font-size: 16px;
-        font-weight: 500;
-    }
+        .custom--table {
+            width: 100%;
+            color: inherit;
+            vertical-align: top;
+            font-weight: 400;
+            border-collapse: collapse;
+            border-bottom: 2px solid #ddd;
+            margin-top: 0;
+        }
 
-    .custom--table tbody {
-        border-top: 0;
-        overflow: hidden;
-        border-radius: 10px;
-    }
-    .custom--table thead tr {
-        border-top: 2px solid #ddd;
-        border-bottom: 2px solid #ddd;
-        text-align: left;
-    }
-    .custom--table thead tr th {
-        border-top: 2px solid #ddd;
-        border-bottom: 2px solid #ddd;
-        text-align: left;
-        font-size: 16px;
-        padding: 10px 0;
-    }
-    .custom--table tbody tr {
-        vertical-align: top;
-    }
-    .custom--table tbody tr td {
-        font-size: 14px;
-        line-height: 18px
-        vertical-align: top;
-    }
-    .custom--table tbody tr td:last-child{
-        padding-bottom: 10px;
-    }
-    .custom--table tbody tr td .data-span {
-        font-size: 14px;
-        font-weight: 500;
-        line-height: 18px;
-    }
-    .custom--table tbody .table_footer_row {
-        border-top: 2px solid #ddd;
-        margin-bottom: 10px !important;
-        padding-bottom: 10px !important;
+        .table-title {
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 32px;
+            margin-bottom: 10px;
+        }
 
-    }
-    /* invoice area */
-    .invoice-area {
-        padding: 10px 0;
-    }
+        .custom--table thead {
+            font-weight: 700;
+            background: inherit;
+            color: inherit;
+            font-size: 16px;
+            font-weight: 500;
+        }
 
-    .invoice-wrapper {
-        max-width: 650px;
-        margin: 0 auto;
-        box-shadow: 0 0 10px #f3f3f3;
-        padding: 0px;
-    }
+        .custom--table tbody {
+            border-top: 0;
+            overflow: hidden;
+            border-radius: 10px;
+        }
 
-    .invoice-header {
-        margin-bottom: 40px;
-    }
+        .custom--table thead tr {
+            border-top: 2px solid #ddd;
+            border-bottom: 2px solid #ddd;
+            text-align: left;
+        }
 
-    .invoice-flex-contents {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 24px;
-        flex-wrap: wrap;
-    }
+        .custom--table thead tr th {
+            border-top: 2px solid #ddd;
+            border-bottom: 2px solid #ddd;
+            text-align: left;
+            font-size: 16px;
+            padding: 10px 0;
+        }
+
+        .custom--table tbody tr {
+            vertical-align: top;
+        }
+
+        .custom--table tbody tr td {
+            font-size: 14px;
+            line-height: 18px vertical-align: top;
+        }
+
+        .custom--table tbody tr td:last-child {
+            padding-bottom: 10px;
+        }
+
+        .custom--table tbody tr td .data-span {
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 18px;
+        }
+
+        .custom--table tbody .table_footer_row {
+            border-top: 2px solid #ddd;
+            margin-bottom: 10px !important;
+            padding-bottom: 10px !important;
+
+        }
+
+        /* invoice area */
+        .invoice-area {
+            padding: 10px 0;
+        }
+
+        .invoice-wrapper {
+            max-width: 650px;
+            margin: 0 auto;
+            box-shadow: 0 0 10px #f3f3f3;
+            padding: 0px;
+        }
+
+        .invoice-header {
+            margin-bottom: 40px;
+        }
+
+        .invoice-flex-contents {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
 
 
 
-    .invoice-logo img {}
+        .invoice-logo img {}
 
-    .invoice-header-contents {
-        float: right;
-    }
+        .invoice-header-contents {
+            float: right;
+        }
 
-    .invoice-header-contents .invoice-title {
-        font-size: 40px;
-        font-weight: 700;
-    }
+        .invoice-header-contents .invoice-title {
+            font-size: 40px;
+            font-weight: 700;
+        }
 
-    .invoice-details {
-        margin-top: 20px;
-    }
+        .invoice-details {
+            margin-top: 20px;
+        }
 
-    .invoice-details-flex {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-        gap: 24px;
-        flex-wrap: wrap;
-    }
+        .invoice-details-flex {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
 
-    .invoice-details-title {
-        font-size: 24px;
-        font-weight: 700;
-        line-height: 32px;
-        color: #333;
-        margin: 0;
-        padding: 0;
-    }
+        .invoice-details-title {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 32px;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
 
-    .invoice-single-details {}
+        .invoice-single-details {}
 
-    .details-list {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        margin-top: 10px;
-    }
+        .details-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            margin-top: 10px;
+        }
 
-    .details-list .list {
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 18px;
-        color: #666;
-        margin: 0;
-        padding: 0;
-        transition: all .3s;
-    }
-    .details-list .list strong {
-        font-size: 14px;
-        font-weight: 500;
-        line-height: 18px;
-        color: #666;
-        margin: 0;
-        padding: 0;
-        transition: all .3s;
-    }
+        .details-list .list {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 18px;
+            color: #666;
+            margin: 0;
+            padding: 0;
+            transition: all .3s;
+        }
 
-    .details-list .list a {
-        display: inline-block;
-        color: #666;
-        transition: all .3s;
-        text-decoration: none;
-        margin: 0;
-        line-height: 18px
-    }
+        .details-list .list strong {
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 18px;
+            color: #666;
+            margin: 0;
+            padding: 0;
+            transition: all .3s;
+        }
 
-    .item-description {
-        margin-top: 10px;
-    }
+        .details-list .list a {
+            display: inline-block;
+            color: #666;
+            transition: all .3s;
+            text-decoration: none;
+            margin: 0;
+            line-height: 18px
+        }
 
-    .products-item {
-        text-align: left;
-    }
+        .item-description {
+            margin-top: 10px;
+        }
 
-    .invoice-total-count {}
+        .products-item {
+            text-align: left;
+        }
 
-    .invoice-total-count .list-single {
-        display: flex;
-        align-items: center;
-        gap: 30px;
-        font-size: 16px;
-        line-height: 28px;
-    }
+        .invoice-total-count {}
 
-    .invoice-total-count .list-single strong {}
+        .invoice-total-count .list-single {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            font-size: 16px;
+            line-height: 28px;
+        }
 
-    .invoice-subtotal {
-        border-bottom: 2px solid #ddd;
-        padding-bottom: 15px;
-    }
+        .invoice-total-count .list-single strong {}
 
-    .invoice-total {
-        padding-top: 10px;
-    }
+        .invoice-subtotal {
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 15px;
+        }
 
-    .terms-condition-content {
-        margin-top: 30px;
-    }
+        .invoice-total {
+            padding-top: 10px;
+        }
 
-    .terms-flex-contents {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 20px;
-        flex-wrap: wrap;
-    }
+        .terms-condition-content {
+            margin-top: 30px;
+        }
 
-    .terms-left-contents {
-        flex-basis: 50%;
-    }
+        .terms-flex-contents {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
 
-    .terms-title {
-        font-size: 18px;
-        font-weight: 700;
-        color: #333;
-        margin: 0;
-    }
+        .terms-left-contents {
+            flex-basis: 50%;
+        }
 
-    .terms-para {
-        margin-top: 10px;
-    }
+        .terms-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #333;
+            margin: 0;
+        }
 
-    .invoice-footer {}
+        .terms-para {
+            margin-top: 10px;
+        }
 
-    .invoice-flex-footer {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 30px;
-    }
+        .invoice-footer {}
 
-    .single-footer-item {
-        flex: 1;
-    }
+        .invoice-flex-footer {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
 
-    .single-footer {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
+        .single-footer-item {
+            flex: 1;
+        }
 
-    .single-footer .icon {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 30px;
-        width: 30px;
-        font-size: 16px;
-        background-color: #000e8f;
-        color: #fff;
-    }
+        .single-footer {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-    .icon-details {
-        flex: 1;
-    }
+        .single-footer .icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 30px;
+            width: 30px;
+            font-size: 16px;
+            background-color: #000e8f;
+            color: #fff;
+        }
 
-    .icon-details .list {
-        display: block;
-        text-decoration: none;
-        color: #666;
-        transition: all .3s;
-        line-height: 24px;
-    }
-</style>
+        .icon-details {
+            flex: 1;
+        }
 
-<!-- Invoice area Starts -->
-<div class="invoice-area">
-    <div class="invoice-wrapper">
-        <div class="invoice-header">
-            <div class="invoice-flex-contents">
-                <div class="invoice-logo">
-                    logo
-                </div>
-                <div class="invoice-header-contents" style="float:right;margin-top:-120px;">
-                    <h2 class="invoice-title">{{ __('INVOICE') }}</h2>
+        .icon-details .list {
+            display: block;
+            text-decoration: none;
+            color: #666;
+            transition: all .3s;
+            line-height: 24px;
+        }
+    </style>
+
+    <!-- Invoice area Starts -->
+    <div class="invoice-area">
+        <div class="invoice-wrapper">
+            <div class="invoice-header">
+                <div class="invoice-flex-contents">
+                    <div class="invoice-logo">
+                        logo
+                    </div>
+                    <div class="invoice-header-contents" style="float:right;margin-top:-120px;">
+                        <h2 class="invoice-title">{{ __('INVOICE') }}</h2>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="invoice-details">
-            <div class="invoice-details-flex">
-                <div class="invoice-single-details">
-                    <h4 class="invoice-details-title">{{ __('Bill To:') }}</h4>
-                    <ul class="details-list">
-                        <li class="list"> {{ __('TEXLAB IT') }} </li>
-                        <li class="list"> <a href="#">ceo.texlabit@gmail.com</a> </li>
-                        <li class="list"> <a href="#"> +880 1752-274447</a> </li>
-                    </ul>
+            <div class="invoice-details">
+                <div class="invoice-details-flex">
+                    <div class="invoice-single-details">
+                        <h4 class="invoice-details-title">{{ __('Bill To:') }}</h4>
+                        <ul class="details-list">
+                            <li class="list"> {{ __('TEXLAB IT') }} </li>
+                            <li class="list"> <a href="#">ceo.texlabit@gmail.com</a> </li>
+                            <li class="list"> <a href="#"> +880 1752-274447</a> </li>
+                        </ul>
+                    </div>
+
                 </div>
-                
             </div>
-        </div>
 
-        <div class="item-description">
-            <div class="table-responsive">
-                <h5 class="table-title">{{ __('Addmission Details') }}</h5>
-                <table class="custom--table">
-                    <thead class="head-bg">
-                    <tr>
-                        <th>{{ __('Student Details') }}</th>
-                        <th>{{ __('Date & Schedule') }}</th>
-                        <th>{{ __('Amount Details') }}</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>
-                            <span class="data-span"> {{ __('Name: ') }}</span>{{ __('MD Abdul Awal Anik ') }} <br>
-                            <span class="data-span"> {{ __('Email: ') }}</span>anik@gmail.com <br>
-                            <span class="data-span"> {{ __('Phone: ') }}01678985958 <br>
-                            <span class="data-span"> {{ __('Address: ') }}</span>{{ __('Rajshahi') }}
-                        </td>
-                        <td>
-                            @php
-                                echo date('Y-m-d');
-                            @endphp
-                        </td>
-                        <td>
-                            <span class="data-span"> {{ __('Addmmsion Fee:') }} </span>U+09F3 80 <br>
-                            <span class="data-span"> {{ __('Sub Total:') }} </span>U+09F31 00 <br>
-                            <span class="data-span"> {{ __('Total:') }} </span>&#2547; 100 <br>
-                            <span class="data-span"> {{ __('Payment Status:') }} </span>{{ __('Pending') }}
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+            <div class="item-description">
+                <div class="table-responsive">
+                    <h5 class="table-title">{{ __('Addmission Details') }}</h5>
+                    <table class="custom--table">
+                        <thead class="head-bg">
+                            <tr>
+                                <th>{{ __('Student Details') }}</th>
+                                <th>{{ __('Date & Schedule') }}</th>
+                                <th>{{ __('Amount Details') }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <span class="data-span"> {{ __('Name: ') }}</span>{{ __('MD Abdul Awal Anik ') }}
+                                    <br>
+                                    <span class="data-span"> {{ __('Email: ') }}</span>anik@gmail.com <br>
+                                    <span class="data-span"> {{ __('Phone: ') }}01678985958 <br>
+                                        <span class="data-span"> {{ __('Address: ') }}</span>{{ __('Rajshahi') }}
+                                </td>
+                                <td>
+                                    @php
+                                        echo date('Y-m-d');
+                                    @endphp
+                                </td>
+                                <td>
+                                    <span class="data-span"> {{ __('Addmmsion Fee:') }} </span>U+09F3 80 <br>
+                                    <span class="data-span"> {{ __('Sub Total:') }} </span>U+09F31 00 <br>
+                                    <span class="data-span"> {{ __('Total:') }} </span>&#2547; 100 <br>
+                                    <span class="data-span"> {{ __('Payment Status:') }} </span>{{ __('Pending') }}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
+
+
         </div>
-
-
     </div>
-</div>
 
-<!-- Invoice area end -->
+    <!-- Invoice area end -->
 
 </body>
 

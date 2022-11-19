@@ -50,9 +50,10 @@
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-primary add_section">Save </button>
                     </div>
+                </form>
             </div>
         </div>
-        </form>
+
     </div>
     <!-- /.Modal -->
     <div class="container-fluid">
@@ -80,9 +81,9 @@
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $item->section_name }}</td>
                                         @if (empty($item->my_class->class_name))
-                                        <td>{{ $item->class_id}}</td> 
+                                            <td>{{ $item->class_id }}</td>
                                         @else
-                                        <td>{{ $item->my_class->class_name}}</td>
+                                            <td>{{ $item->my_class->class_name }}</td>
                                         @endif
                                         <td class="text-right py-0 align-middle">
                                             <div class="btn-group btn-group-sm">
@@ -122,12 +123,12 @@
     @include('Backend.Section.updateSection')
     @include('components.dataTable_scrpit')
     {{-- <script>
-        @if (Session::has('success'))
-            toastr.options = {
-                    "closeButton": true,
-                    "progressBar": true
-                },
-                toastr.success("{{ 'Data added Successfully' }}")
-        @endif
-    </script> --}}
+    @if (Session::has('success'))
+        toastr.options = {
+                "closeButton": true,
+                "progressBar": true
+            },
+            toastr.success("{{ 'Data added Successfully' }}")
+    @endif
+</script> --}}
 @endsection
