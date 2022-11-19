@@ -78,6 +78,7 @@ $(document).ready(function () {
         let up_stu_due_amount = $("#up_stu_due_amount").val();
         let up_pay_type = $("#up_pay_type").val();
         let up_total_amount = $("#up_total_amount").val();
+        let up_pay_amount = $("#up_pay_amount").val();
         let url = $("#up_paymentFrom").attr("action");
         $.ajax({
             url: url,
@@ -89,6 +90,7 @@ $(document).ready(function () {
                 up_stu_due_amount: up_stu_due_amount,
                 up_pay_type: up_pay_type,
                 up_total_amount: up_total_amount,
+                up_pay_amount:up_pay_amount,
             },
             success: function (res) {
                 if (res.status == "success") {
@@ -198,7 +200,7 @@ $(document).ready(function () {
             },
         });
     });
-    // class wise fees value Chnage Scripts
+    // student wise fees value Chnage Scripts
     $("#student_select_id").change(function () {
         let student_select_id = $(this).val();
         let url = $("#student_select_id").data("url");
@@ -208,6 +210,7 @@ $(document).ready(function () {
             data: { student_select_id: student_select_id },
             success: function (data) {
                 $("#stu_due_amount").val(data.total_ammount);
+             
             },
             error: function () {
                 alert("Fees not assigned");

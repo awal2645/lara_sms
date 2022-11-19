@@ -3,6 +3,7 @@
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PaymentHistoryController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\SettingController;
@@ -41,6 +42,7 @@ Route::post('student-fees', [PaymentController::class, 'searchStudentByFess'])->
 Route::post('student/payment/add', [PaymentController::class, 'addStudentPayment'])->name('student.payment');
 Route::post('student/payment/update', [PaymentController::class, 'updateStudentPayment'])->name('update.student.payment');
 Route::post('student/payment/delete', [PaymentController::class, 'deleteStudentPayment'])->name('delete.student.payment');
+Route::get('student/payment/history', [PaymentHistoryController::class, 'paymentHistoryViewpage'])->name('payment.history.view.page');
 // PDF
 Route::get('pdf', [PdfController::class, 'generate_pdf']);
 Route::get('/download-pdf', [PdfController::class, 'download_pdf']);

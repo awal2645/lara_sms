@@ -57,8 +57,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="pay_amount"> Pay Amount</label>
-                                    <input type="text" id="pay_amount" name="pay_amount" class="form-control"
-                                        placeholder="Enter Your Ammout" required>
+                                    <input type="number" id="pay_amount" name="pay_amount" class="form-control"
+                                        placeholder="Enter Your Ammout"  min="1" max="5" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="due_pay_date">Due Payment Date</label>
@@ -114,7 +114,7 @@
                 <!-- /.card -->
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title"> Transaction List </h3>
+                        <h3 class="card-title"> Student Payment List </h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -125,7 +125,8 @@
                                     <th> Name </th>
                                     <th> Roll </th>
                                     <th> Class </th>
-                                    <th> Total Pay </th>
+                                    <th> Fees </th>
+                                    <th> Total Paid </th>
                                     <th> Due </th>
                                     <th> Satus</th>
                                     <th> Action </th>
@@ -142,18 +143,35 @@
                                         @else
                                             <td>{{ $item->my_class->class_name }}</td>
                                         @endif
+                                        <td>{{ $item->my_student->total_ammount }}</td>
                                         <td>{{ $item->my_student->total_ammount - $item->total_amount }}</td>
                                         <td>{{ $item->total_amount }}</td>
-                                        <td><button type="button" class=" btn-danger">Unpaid</button></td>
+                                        @if ($item->total_amount===0)
+                                        <td><button type="button" class=" btn-success">Paid</button></td>
+                                        @else
+                                        <td><button type="button" class=" btn-danger">Unpaid</button></td> 
+                                        @endif
                                         <td class="text-right py-0 align-middle">
                                             <div class="btn-group btn-group-sm">
+                                                @if ($item->total_amount===0)
+                                                <a href="#" class="btn btn-info disabled update_payment_from"
+                                                data-toggle="modal" data-target="#updateModal"
+                                                data-id="{{ $item->id }}"
+                                                data-stu_name="{{ $item->my_student->stu_name }}"
+                                                data-stu_due_ammout="{{ $item->total_amount }}"
+                                                data-class_name="{{ $item->my_class->class_name }}" disabled>
+                                                <i class="fas fa-edit"></i></a> 
+                                                @else
                                                 <a href="#" class="btn btn-info update_payment_from"
-                                                    data-toggle="modal" data-target="#updateModal"
-                                                    data-id="{{ $item->id }}"
-                                                    data-stu_name="{{ $item->my_student->stu_name }}"
-                                                    data-stu_due_ammout="{{ $item->total_amount }}"
-                                                    data-class_name="{{ $item->my_class->class_name }}">
-                                                    <i class="fas fa-eye"></i></a>
+                                                data-toggle="modal" data-target="#updateModal"
+                                                data-id="{{ $item->id }}"
+                                                data-stu_name="{{ $item->my_student->stu_name }}"
+                                                data-stu_due_ammout="{{ $item->total_amount }}"
+                                                data-class_name="{{ $item->my_class->class_name }}" disabled>
+                                                <i class="fas fa-edit"></i></a>
+                                                @endif
+                                               
+                                                    
                                                 <a href="{{ route('delete.student.payment') }}" id="del"
                                                     class="btn btn-danger delete_payment_id"
                                                     data-id="{{ $item->id }}"><i class="fas fa-trash"></i></a>
@@ -168,7 +186,8 @@
                                     <th> Name </th>
                                     <th> Roll </th>
                                     <th> Class </th>
-                                    <th> Total Pay </th>
+                                    <th> Fees </th>
+                                    <th> Total Paid </th>
                                     <th> Due </th>
                                     <th> Satus</th>
                                     <th> Action </th>

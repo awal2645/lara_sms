@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('payment_histories', function (Blueprint $table) {
             $table->id();
+            $table->string('pay_trx');
+            $table->integer('pay_stu_id');
+            $table->string('pay_date');
+            $table->integer('pay_amount');
             $table->timestamps();
         });
     }

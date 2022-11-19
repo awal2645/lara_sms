@@ -55,7 +55,8 @@ class PaymentController extends Controller
         $add_payment->save();
 
         $add_payment_history = new PaymentHistory();
-        $add_payment_history->student_select_id = $request->student_select_id;
+        $add_payment_history->pay_trx = uniqid();
+        $add_payment_history->pay_stu_id = $request->student_select_id;
         $add_payment_history->pay_date = $request->pay_date;
         $add_payment_history->pay_amount = $request->pay_amount;
         $add_payment_history->save();
@@ -75,6 +76,12 @@ class PaymentController extends Controller
                 'total_amount' => $request->up_total_amount,
             ]
         );
+        $add_payment_history = new PaymentHistory();
+        $add_payment_history->pay_trx = uniqid();
+        $add_payment_history->pay_stu_id = $request->up_payment_id;
+        $add_payment_history->pay_date = $request->up_pay_date;
+        $add_payment_history->pay_amount = $request->up_pay_amount;
+        $add_payment_history->save();
         return response()->json([
             'status' => 'success',
         ]);
