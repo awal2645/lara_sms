@@ -237,6 +237,7 @@ $(document).ready(function () {
     });
     // payment calculation scripts
     $("#up_paymentFrom").change(function () {
+      
         if ($("#up_paymentFrom").length) {
             $("#up_stu_due_amount").keyup(function () {
                 $.sum();
@@ -252,4 +253,22 @@ $(document).ready(function () {
             );
         };
     });
+    // limitation  of input value
+    $("#pay_amount").on('keyup keypress blur change', function(e) {
+        let val=$("#stu_due_amount").val();
+        if($(this).val() > $("#stu_due_amount").val()){
+          $(this).val(val);
+          return false;
+        }
+    
+      });
+    
+      $("#up_pay_amount").on('keyup keypress blur change', function(e) {
+        let val=$("#stu_due_amount").val();
+        if($(this).val() > $("#stu_due_amount").val()){
+          $(this).val(val);
+          return false;
+        }
+    
+      });
 });

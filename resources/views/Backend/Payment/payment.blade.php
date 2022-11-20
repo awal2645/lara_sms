@@ -58,12 +58,12 @@
                                 <div class="form-group">
                                     <label for="pay_amount"> Pay Amount</label>
                                     <input type="number" id="pay_amount" name="pay_amount" class="form-control"
-                                        placeholder="Enter Your Ammout"  min="1" max="5" required>
+                                        placeholder="Enter Your Ammout"  required>
                                 </div>
                                 <div class="form-group">
                                     <label for="due_pay_date">Due Payment Date</label>
-                                    <input type="date" class="form-control" name="due_pay_date" id="due_pay_date"
-                                        required>
+                                    <input type="date" class="form-control" name="due_pay_date" id="due_pay_date" 
+                                     required>
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -90,7 +90,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="pay_date">Payment Date</label>
-                                    <input type="date" class="form-control" name="pay_date" id="pay_date" required>
+                                    <input type="date" class="form-control" name="pay_date" id="pay_date" value="<?php echo date('Y-m-d'); ?>" required>
                                 </div>
                                 <br>
                                 <!-- /.form-group -->

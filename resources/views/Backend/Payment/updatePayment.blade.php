@@ -66,7 +66,7 @@
                                 <div class="form-group">
                                     <label for="up_pay_date">Payment Date</label>
                                     <input type="date" class="form-control" name="up_pay_date" id="up_pay_date"
-                                        required>
+                                    value="<?php echo date('Y-m-d'); ?>"  required>
                                 </div>
                                 <br>
                                 <!-- /.form-group -->
